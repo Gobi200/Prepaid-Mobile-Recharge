@@ -1,0 +1,427 @@
+{
+  "rechargeData": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "mobile": "9876543210",
+      "plan": "₹ 299 Plan",
+      "date": "2023-10-25 10:30 AM"
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "mobile": "9876543211",
+      "plan": "₹ 499 Plan",
+      "date": "2023-10-26 11:45 AM"
+    },
+    {
+      "id": "3",
+      "name": "Alice Johnson",
+      "email": "alice@example.com",
+      "mobile": "9876543212",
+      "plan": "₹ 199 Plan",
+      "date": "2023-10-27 09:15 AM"
+    },
+    {
+      "id": "4",
+      "name": "Bob Martin",
+      "email": "bob@example.com",
+      "mobile": "9876543213",
+      "plan": "₹ 399 Plan",
+      "date": "2023-10-28 02:30 PM"
+    },
+    {
+      "id": "5",
+      "name": "Charlie Brown",
+      "email": "charlie@example.com",
+      "mobile": "9876543214",
+      "plan": "₹ 599 Plan",
+      "date": "2023-10-29 11:00 AM"
+    },
+    {
+      "id": "6",
+      "name": "David Lee",
+      "email": "david@example.com",
+      "mobile": "9876543215",
+      "plan": "₹ 699 Plan",
+      "date": "2023-10-30 04:45 PM"
+    },
+    {
+      "id": "7",
+      "name": "Eve Adams",
+      "email": "eve@example.com",
+      "mobile": "9876543216",
+      "plan": "₹ 249 Plan",
+      "date": "2023-11-01 01:15 PM"
+    },
+    {
+      "id": "8",
+      "name": "Franklin D.",
+      "email": "frank@example.com",
+      "mobile": "9876543217",
+      "plan": "₹ 799 Plan",
+      "date": "2023-11-02 05:00 PM"
+    },
+    {
+      "id": "9",
+      "name": "Grace Kelly",
+      "email": "grace@example.com",
+      "mobile": "9876543218",
+      "plan": "₹ 999 Plan",
+      "date": "2023-11-03 06:30 PM"
+    },
+    {
+      "id": "10",
+      "name": "Hannah White",
+      "email": "hannah@example.com",
+      "mobile": "9876543219",
+      "plan": "₹ 299 Plan",
+      "date": "2023-11-04 10:00 AM"
+    },
+    {
+      "id": "11",
+      "name": "Ian Black",
+      "email": "ian@example.com",
+      "mobile": "9876543220",
+      "plan": "₹ 449 Plan",
+      "date": "2023-11-05 03:30 PM"
+    },
+    {
+      "id": "12",
+      "name": "Jackie Chan",
+      "email": "jackie@example.com",
+      "mobile": "9876543221",
+      "plan": "₹ 549 Plan",
+      "date": "2023-11-06 07:00 AM"
+    },
+    {
+      "id": "13",
+      "name": "Katherine Heigl",
+      "email": "katherine@example.com",
+      "mobile": "9876543222",
+      "plan": "₹ 159 Plan",
+      "date": "2023-11-07 02:00 PM"
+    },
+    {
+      "id": "14",
+      "name": "Liam Neeson",
+      "email": "liam@example.com",
+      "mobile": "9876543223",
+      "plan": "₹ 1099 Plan",
+      "date": "2023-11-08 09:30 AM"
+    },
+    {
+      "id": "15",
+      "name": "Monica Geller",
+      "email": "monica@example.com",
+      "mobile": "9876543224",
+      "plan": "₹ 349 Plan",
+      "date": "2023-11-09 12:15 PM"
+    }
+  ],
+  "expiringUsers": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "phone": "9876543210",
+      "email": "Johndoe@gmail.com",
+      "plan": "₹ 2199 Plan",
+      "expiry": "2023-10-25"
+    },
+    {
+      "id": "7",
+      "name": "Jane Smith",
+      "phone": "9876543211",
+      "email": "Janesimth123@gmail.com",
+      "plan": "₹ 499 Plan",
+      "expiry": "2023-10-26"
+    },
+    {
+      "id": "9",
+      "name": "Alice Johnson",
+      "phone": "9876543212",
+      "email": "Alicejohn@gmail.com",
+      "plan": "₹ 199 Plan",
+      "expiry": "2023-10-27"
+    },
+    {
+      "id": "15",
+      "name": "Gilbert",
+      "phone": "9894035978",
+      "email": "Gilbert@gmail.com",
+      "plan": "₹ 1899 Plan",
+      "expiry": "2023-10-27"
+    },
+    {
+      "id": "24",
+      "name": "Ramesh Tilak",
+      "phone": "763979850",
+      "email": "tilakramesh@gmail.com",
+      "plan": "₹ 899 Plan",
+      "expiry": "2023-10-27"
+    },
+    {
+      "id": "30",
+      "name": "Karan Sharma",
+      "phone": "6397891234",
+      "email": "karan890@gmail.com",
+      "plan": "₹ 449 Plan",
+      "expiry": "2023-10-27"
+    },
+    {
+      "id": "31",
+      "name": "Priya Verma",
+      "phone": "9876543210",
+      "email": "priya.verma@gmail.com",
+      "plan": "₹ 599 Plan",
+      "expiry": "2023-11-15"
+    },
+    {
+      "id": "42",
+      "name": "Amit Singh",
+      "phone": "8756392412",
+      "email": "amit.singh@gmail.com",
+      "plan": "₹ 2399 Plan",
+      "expiry": "2023-12-05"
+    },
+    {
+      "id": "53",
+      "name": "Neha Gupta",
+      "phone": "9123456780",
+      "email": "neha.gupta@yahoo.com",
+      "plan": "₹ 699 Plan",
+      "expiry": "2023-09-30"
+    }
+  ],
+  "active_users": [
+    {
+      "id": "1",
+      "name": "Alexander",
+      "mobile": "9876543210",
+      "email": "alex@gmail.com",
+      "transactions": [
+        {
+          "plan": "₹199 Plan",
+          "date": "2024-01-28 11:15 AM",
+          "status": "Success"
+        },
+        {
+          "plan": "₹299 Plan",
+          "date": "2024-02-05 09:00 PM",
+          "status": "Success"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "mobile": "9876543211",
+      "email": "jane@example.com",
+      "transactions": [
+        {
+          "plan": "₹199 Plan",
+          "date": "2024-01-28 09:15 AM",
+          "status": "Success"
+        },
+        {
+          "plan": "₹299 Plan",
+          "date": "2024-02-05 10:00 AM",
+          "status": "Success"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Raj Malhotra",
+      "mobile": "9876543212",
+      "email": "raj@example.com",
+      "transactions": [
+        {
+          "plan": "₹399 Plan",
+          "date": "2024-01-12 03:00 PM",
+          "status": "Failed"
+        },
+        {
+          "plan": "₹199 Plan",
+          "date": "2024-02-15 04:00 PM",
+          "status": "Success"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Priya Sharma",
+      "mobile": "9876543213",
+      "email": "priya@example.com",
+      "transactions": [
+        {
+          "plan": "₹599 Plan",
+          "date": "2024-02-18 12:45 PM",
+          "status": "Success"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "John Doe",
+      "mobile": "9876543214",
+      "email": "john@example.com",
+      "transactions": [
+        {
+          "plan": "₹199 Plan",
+          "date": "2024-01-10 11:00 AM",
+          "status": "Success"
+        },
+        {
+          "plan": "₹399 Plan",
+          "date": "2024-02-01 03:30 PM",
+          "status": "Failed"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Neol Arman",
+      "mobile": "9876543714",
+      "email": "neol@example.com",
+      "transactions": [
+        {
+          "plan": "₹2025 Plan",
+          "date": "2024-01-10 11:00 AM",
+          "status": "Success"
+        },
+        {
+          "plan": "879 Plan",
+          "date": "2024-02-01 03:30 PM",
+          "status": "Failed"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "Karan Verma",
+      "mobile": "9876543216",
+      "email": "karan@example.com",
+      "transactions": [
+        {
+          "plan": "₹199 Plan",
+          "date": "2024-02-10 04:00 PM",
+          "status": "Success"
+        },
+        {
+          "plan": "₹299 Plan",
+          "date": "2024-02-20 05:00 PM",
+          "status": "Success"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Anita Das",
+      "mobile": "9876543217",
+      "email": "anita@example.com",
+      "transactions": [
+        {
+          "plan": "₹299 Plan",
+          "date": "2024-02-22 02:00 PM",
+          "status": "Success"
+        },
+        {
+          "plan": "₹199 Plan",
+          "date": "2024-02-28 11:30 AM",
+          "status": "Success"
+        }
+      ]
+    }
+  ],
+  "deactivated_users": [
+    {
+      "id": "17",
+      "name": "Arjun Patel",
+      "mobile": "9876543226",
+      "email": "arjun@example.com",
+      "transactions": []
+    },
+    {
+      "id": "18",
+      "name": "Olivia Brown",
+      "mobile": "9876543227",
+      "email": "olivia@example.com",
+      "transactions": [
+        {
+          "plan": "₹299 Plan",
+          "date": "2023-11-28 10:00 AM",
+          "status": "Failed"
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "name": "Ethan Lee",
+      "mobile": "9876543228",
+      "email": "ethan@example.com",
+      "transactions": [
+        {
+          "plan": "₹399 Plan",
+          "date": "2023-10-10 09:00 AM",
+          "status": "Success"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "name": "Sophia Kim",
+      "mobile": "9876543229",
+      "email": "sophia@example.com",
+      "transactions": []
+    }
+  ],
+  "planCategory": [
+    {
+      "id": "10b2",
+      "name": "POPULAR PLAN"
+    },
+    {
+      "id": "dd0f",
+      "name": "TRUE 5G PLAN"
+    },
+    {
+      "id": "d782",
+      "name": "ANNUAL PLANS"
+    },
+    {
+      "id": "ef7d",
+      "name": "TOP UP PLANS"
+    },
+    {
+      "id": "1e91",
+      "name": "VALUE PLAN"
+    }
+  ],
+  "plans": [
+    {
+      "id": "377a",
+      "category": "POPULAR PLAN",
+      "price": "3455",
+      "validity": "365 Days",
+      "calls": "Unlimited",
+      "data": "2.5 Gb/Day",
+      "message": "100 sms/Day",
+      "benefits": "upto 1 Gb data every day",
+      "tag": "POPULAR"
+    },
+    {
+      "id": "d2ef",
+      "category": "POPULAR PLAN",
+      "price": "1099",
+      "validity": "84 Days",
+      "calls": "Unlimited",
+      "data": "2 Gb/Day",
+      "message": "100 sms/Day",
+      "benefits": "Upto 1 Gb 5G data every day",
+      "tag": "POPULAR"
+    }
+  ]
+}

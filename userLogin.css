@@ -1,0 +1,103 @@
+.section_title{
+    font-size: 30px;
+}
+.keyPoints{
+    font-size: 10px;
+    font-family: "Poppins", serif;
+}
+.user_login{
+    /* background-color: #EBE8FC; */
+    font-family: "Poppins", serif;
+}
+.prepaid_button{
+    background-color: #0096C7;
+    font-size: larger;
+    font-family: "Poppins", serif;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+.icon{
+    color: #023E8A;
+    font-weight: bold;
+}
+.otp-input-container {
+    display: flex;
+    gap: 10px;
+}
+.otp-box {
+    width: 40px;
+    height: 50px;
+    font-size: 24px;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+.otp-input-container {
+    display: flex;
+     gap: 10px;
+}
+.verify_button {
+    display: inline-block;
+    padding: .75rem 1.25rem;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: #fff;
+    background-color: #0096C7;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    overflow: hidden;
+    z-index: 1;
+}
+.verify_button:hover{
+    background-color: #023E8A;
+    color: #fff;
+}
+.generateOtpBtn {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    border-radius: 10rem;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 0.15rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.generateOtpBtn:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #023E8A;
+    border-radius: 10rem;
+    z-index: -2;
+}
+.generateOtpBtn:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #03045E;
+    transition: all 0.3s;
+    border-radius: 10rem;
+    z-index: -1;
+}
+.generateOtpBtn:hover {
+    color: #fff;
+}
+.generateOtpBtn:hover:before {
+    width: 100%;
+}
+.error-text {
+    color: red;
+    font-size: 0.875rem;
+    display: block;
+    margin-top: 5px;
+}

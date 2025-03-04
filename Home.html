@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrePaid Mobile Recharge</title>
+    <!-- Bootstrap Css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Bootstarp Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- CSS FILE -->
+     <link rel="stylesheet" type="text/css" href="home.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Carousel effects  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <style>
+        .banner_data{
+            color: white;
+        }
+        .banner_value{
+            font-size: xx-large;
+        }
+        .Banner_logo{
+            font-family: "Oleo Script Swash Caps", system-ui;
+            letter-spacing: 1px;
+            font-weight: bolder;
+            font-size: 50px;
+        }
+        .card {
+         width: 100%;
+         border-radius: 10px;
+       }
+       
+       .card img {
+           border-radius: 10px 10px 0 0;
+           object-fit: cover;
+       }
+
+       i.fa-star {
+           color: orangered;
+       }
+
+       .btn-group i {
+           color: orangered;
+       }
+
+       .btn-group button:hover {
+           background-color: orange;
+       }
+
+       .btn-group button:hover i.fa-solid {
+           color: black;
+       }
+
+       .card-body h2 {
+           font-size: 1.2em;
+           text-transform: capitalize;
+       }
+
+       /* Indicators */
+       .owl-theme .owl-dots .owl-dot.active span, 
+       .owl-theme .owl-dots .owl-dot:hover span {
+           /* background: #0077B6; */
+           background: #48CAE4;
+           width: 30px;
+       }
+
+       .owl-theme .owl-dots .owl-dot span {
+       width: 15px;
+       height: 15px;
+       /* background: orangered; */
+       background: #023E8A;
+       transition: all .2s ease;
+        }
+
+    /* Controls */
+    /* button element */
+    .owl-carousel .owl-nav button.owl-next, 
+    .owl-carousel .owl-nav button.owl-prev {
+        position: relative;
+        /* background-color: rgba(255, 166, 0, 0.3); */
+        width: 30px;
+        padding: 5px;
+    }
+
+    .owl-carousel .owl-nav button.owl-next:hover, 
+    .owl-carousel .owl-nav button.owl-prev:hover {
+        background-color: #0077B6;
+    }
+
+    .owl-carousel .owl-nav button.owl-next::before, 
+    .owl-carousel .owl-nav button.owl-prev::before {
+        width: 100%;
+        height: 100%;
+        color: #0077B6;
+        /* inset: 0;
+        position: absolute; */
+    }
+
+    .owl-carousel .owl-nav button.owl-next::before {
+        content:'\f061'; /*unicode for arrow-right*/
+        font-family: 'Font Awesome 5 Free'; /* Font family for Font Awesome */
+        font-weight: 900; /* Font weight for the solid style (fas) */
+        margin-right: 5px; 
+    }
+
+    .owl-carousel .owl-nav button.owl-prev::before {
+        content:'\f060'; /*unicode for arrow-left*/
+        font-family: 'Font Awesome 5 Free'; /* Font family for Font Awesome */
+        font-weight: 900; /* Font weight for the solid style (fas) */
+        margin-right: 5px; 
+    }
+
+    .owl-carousel .owl-nav .owl-next [aria-label="Next"], 
+    .owl-carousel .owl-nav .owl-prev [aria-label="Previous"]{
+    visibility:hidden /*The Span element*/
+    }
+
+    /* 3D Spinner */
+        .owl-carousel .item {
+        /* text-align: center; */
+        padding: 50px;
+        margin-bottom:10px;
+        opacity: .2;
+        -webkit-transform: scale3d(0.8, 0.8, 1);
+        transform: scale3d(0.8, 0.8, 1);
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+    .owl-carousel .owl-item.active.center .item {
+        opacity: 1;
+        -webkit-transform: scale3d(1.0, 1.0, 1);
+        transform: scale3d(1.0, 1.0, 1);
+        }
+
+        .BestSeller_heading{
+            background-color: #023E8A; /* Blue color */
+            color: white;
+            padding-left: 60px;
+            padding-right: 45px;
+            clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%, 15% 50%);
+        }
+        .verticle_line{
+            border-right: 2px solid white;
+            align-items: center;
+        }
+        .Banner_slogan{
+            font-family: "Caveat Brush", cursive;
+            font-weight: 400;
+            font-style: normal;
+            letter-spacing: 1px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        .timeline_title{
+            color: #023E8A;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #ddd;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-step {
+            padding: 20px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-step:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-step:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1.5em;
+            top: 20px;
+        }
+
+        .timeline-step:nth-child(odd) .timeline-icon {
+            right: -25px;
+        }
+
+        .timeline-step:nth-child(even) .timeline-icon {
+            left: -25px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .timeline-step:nth-child(odd) .timeline-content {
+            margin-right: 30px;
+        }
+
+        .timeline-step:nth-child(even) .timeline-content {
+            margin-left: 30px;
+        }
+
+        @media (max-width: 767.98px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-step {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-step:nth-child(odd),
+            .timeline-step:nth-child(even) {
+                left: 0;
+                text-align: left;
+            }
+
+            .timeline-step:nth-child(odd) .timeline-icon,
+            .timeline-step:nth-child(even) .timeline-icon {
+                left: 10px;
+                right: auto;
+            }
+
+            .timeline-step:nth-child(odd) .timeline-content,
+            .timeline-step:nth-child(even) .timeline-content {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+   </style>  
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+     <div class="header">
+         <nav class="navbar navbar-expand-md bg-body-tertiary fixed-top">
+             <div class="container-fluid">
+                 <!-- Navbar Brand (Left) -->
+                 <a class="navbar-brand logo" href="Home.html"><span class="logo_first_letter">M</span><span class="sub_logo">obiComm</span></a>
+         
+                 <!-- Navbar Links (Visible on Medium and Larger Screens) -->
+                 <div class="d-none d-md-flex justify-content-center flex-grow-1">
+                     <div class="navbar-nav">
+                         <a class="nav-link active nav_font fw-bold" href="Home.html">Home</a>
+                         <a class="nav-link nav_font" href="about.html">About</a>
+                         <a class="nav-link nav_font" href="viewPlans.html">View Plans</a>
+                         <a class="nav-link nav_font" href="contact.html">Contact</a>
+                     </div>
+                 </div>
+         
+                 <!-- User Icon & Offcanvas Toggle (Right Side) -->
+                 <div class="d-flex align-items-center">
+                     <!-- User Icon -->
+                     <a href="userLogin.html" class="me-3"><i class="bi bi-person-circle header_icon_color fs-4"></i></a>
+         
+                     <!-- Offcanvas Toggle Button (Visible on Mobile & Tablets) -->
+                     <button class="btn btn-outline-secondary d-md-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                         <i class="bi bi-list fs-3"></i>
+                     </button>
+                 </div>
+             </div>
+         </nav>
+         
+         <!-- Offcanvas Navigation (Only for Mobile & Tablet Screens) -->
+         <div class="offcanvas offcanvas-end d-md-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+             <div class="offcanvas-header">
+                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+             </div>
+             <div class="offcanvas-body">
+                 <div class="navbar-nav">
+                     <a class="nav-link active nav_font active fw-bold" href="Home.html">Home</a>
+                     <a class="nav-link nav_font" href="about.html">About</a>
+                     <a class="nav-link nav_font" href="viewPlans.html">View Plans</a>
+                     <a class="nav-link nav_font" href="contact.html">Contact</a>
+                 </div>
+             </div>
+         </div>
+     </div>
+    
+
+    <!-- BANNER -->
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="Banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="text-center py-5 px-5 banner_heading">
+                            <h1>Welcome To <span class="Banner_logo"> MobiComm </span>Services</h1>
+                            <p class="pt-5 Banner_slogan">"One Tap Recharge, Savings Galore – Power up Your Conversations Now !"</p>
+                        </div>
+                        <div class="d-flex justify-content-evenly py-3 banner_data">
+                            <div class="text-center">
+                                <p class="mb-0 banner_value">1 Lakh+</p>
+                                <p class="mb-0 fw-bold">Trusted Customers</p>
+                            </div>
+                            <div class="verticle_line"></div>
+                            <div class="text-center">
+                                <p class="mb-0 banner_value">100+</p>
+                                <p class="mb-0 fw-bold">Dedicated Centers</p>
+                            </div>
+                            <div class="verticle_line"></div>
+                            <div class="text-center">
+                                <p class="mb-0 banner_value">24/7</p>
+                                <p class="mb-0 fw-bold">Customer Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="line-1 anim-typewriter text-start"></p>
+        </div>
+    </div>
+    <div class="d-flex align-items-center justify-content-center">
+        <img src="Assert/wave.svg" alt="Banner_Image" style="width: 90%;">
+    </div>
+      
+    <!-- RECHARGE SECTION-->
+    <section class="container my-5">
+        <div class="row d-flex g-lg-5 g-md-4 g-sm-3 mx-5">
+            <!-- First Column -->
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 bg-white p-4">
+                <h5 class="title title_text">INSTANT MOBILE PREPAID RECHARGE SOLUTION</h5>
+                <p class="mt-4 content">Enjoy seamless, instant prepaid mobile recharges with secure payments and flexible plans. Stay connected effortlessly with reliable service, tailored options, and convenient top-ups for calls, texts, and data anytime, anywhere.</p>
+                <!-- Secure Button -->
+                <div class="d-flex justify-content-center mt-3">
+                    <!-- <button class="secure_button">100% Secure</button> -->
+                    <span class="badge p-3 secure_button">100% Secure</span>
+
+                </div>
+            </div>
+            
+            <div class="col-lg- col-md-6 col-sm-12 col-12 text-white p-4 rounded-4 Mobile_recharge">
+                <h5 class="title">MOBILE RECHARGE</h5>
+                <div class="mb-3 mt-4">
+                    <label for="mobileNumber" class="form-label mt-3 text_label">Mobile Number</label>
+                    <input type="tel" class="form-control rounded-5 w-100 mt-2" id="mobileNumber" placeholder="Enter mobile number" required>
+                    <span class="error-text"></span> <!-- Space reserved to prevent shifting -->
+                </div>
+                
+                <!-- Recharge Button -->
+                <div class="d-flex justify-content-center mt-5">
+                    <button type="submit" class="btn w-50 w-md-25 rounded-pill recharge_button" id="rechargeButton"
+                        data-bs-toggle="offcanvas" data-bs-target="#plansOffcanvas">Recharge</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benifits And Security  -->
+     <section class="pt-4 section-2">
+            <h1 class="display-5 text-center my-3 pb-5 section_title">Benefits & Security</h1>
+            <div class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-3 col-md-4 col-sm-12 mb-4">
+                        <div class="card p-3 benifit_card">
+                            <div class="d-flex justify-content-center mt-4">
+                                <img src="Assert/homeImages/fast&easy.jpg" class="card-img-top mx-auto" style="width: 12rem;" alt="Multiple_Payment_Method">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title mb-3 card-title-text">Fast and Easy Recharge</h5>
+                                <p class="card-text">Recharge your mobile instantly with a fast, secure, and hassle-free process.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-12 mb-4">
+                        <div class="card p-3 benifit_card">
+                            <div class="d-flex justify-content-center mt-4">
+                                <img src="Assert/homeImages/Multiple_Payment_Method-1.png" class="card-img-top mx-auto" style="width: 12rem;" alt="Multiple_Payment_Method">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title mb-3 card-title-text">Multiple Payment Options</h5>
+                                <p class="card-text">Pay securely using UPI, credit/debit cards, net banking, or digital wallets.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-12 mb-4">
+                        <div class="card p-3 benifit_card">
+                            <div class="d-flex justify-content-center mt-4">
+                                <img src="Assert/homeImages/customer_support.png" class="card-img-top mx-auto" style="width: 12rem;" alt="Multiple_Payment_Method">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title mb-3 card-title-text">24/7 <br> Customer Support</h5>
+                                <p class="card-text">Get Instant help anytime, anywhere — fast, reliable, and always there for you!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-12 mb-4">
+                        <div class="card p-3 benifit_card">
+                            <div class="d-flex justify-content-center mt-4">
+                                <img src="Assert/homeImages/Trusted_Payment.png" class="card-img-top mx-auto" style="width: 12rem;" alt="Multiple_Payment_Method">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title mb-3 card-title-text">Trusted Payment Gateway</h5>
+                                <p class="card-text">Secure transactions with a trusted payment gateway for safe and seamless payments.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </section>
+
+
+    <!-- Best Sellers -->
+    <div class="container px-4 py-1" id="custom-cards">
+        <h1 class="pb-4 mt-5 text-center border-bottom display-5">Our <span class="BestSeller_heading">BestSellers</span></h1>
+        <div class="owl-carousel owl-theme">
+            <div class="item item1">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h1 class="text-start fw-bold BestSellers_price">Rs. 3599</h1>
+                        <p class="text-center">365 Days | 2.5 GB/Day</p>
+                        <span class="popular-tag position-absolute top-0 end-0 my-3 px-3 py-1 fw-bold tag">
+                            ANNUAL
+                        </span>
+                        <br>
+                        <i class="bi bi-star-fill position-absolute top-0 end-0 p-2 mt-5 me-3 fs-3 star"></i>
+                        <p><i class="bi bi-telephone-fill icon_color"></i> <span class="ps-2">Unlimited Calls</span></p>
+                        <p><i class="bi bi-chat-dots-fill icon_color"></i> <span class="ps-2">100 SMS/Day</span> </p>
+                        <p class="mb-1"><i class="bi bi-bell-fill icon_color"></i> <span class="ps-2">Subscription</span></p>
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <img src="Assert/PlanImages/netflix.png" alt="Netflix" style="width: 40px; height: 40px;">
+                            <img src="Assert/PlanImages/amazon-prime.png" alt="Amazon_Prime" style="width: 50px; height: 50px;">
+                            <img src="Assert/PlanImages/spotify.png" alt="Spotify" style="width: 40px; height: 40px;">
+                            <img src="Assert/PlanImages/youtube.png" alt="Youtube" style="width: 50px; height: 50px; padding-left: 4px;">
+                        </div>
+                        <p>✔ Additional Benefits...</p>
+                        <ul>
+                            <li>Upto 1.5Gb 5G data Every Day</li>
+                        </ul>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <button class="btn w-75 getplan_button" type="button" data-bs-toggle="modal" data-bs-target="#rechargeModal">Get Plan</button>
+                        </div>
+                    </div>
+                </div>
+            </div><!--[End of Item one]-->
+
+            <div class="item item2">
+                <div class="card shadow-sm">                    
+                    <div class="card-body">
+                        <h1 class="text-start fw-bold BestSellers_price">Rs. 1227</h1>
+                        <p class="text-center">57 Days | 2 GB/Day</p>
+                        <span class="popular-tag position-absolute top-0 end-0 my-3 px-3 py-1 fw-bold tag">
+                            POPULAR
+                        </span>
+                        <br>
+                        <i class="bi bi-star-fill position-absolute top-0 end-0 p-2 mt-5 me-3 fs-3 star"></i>
+                        <p><i class="bi bi-telephone-fill icon_color"></i> <span class="ps-2">Unlimited Calls</span></p>
+                        <p><i class="bi bi-chat-dots-fill icon_color"></i> <span class="ps-2">100 SMS/Day</span></p>
+                        <p class="mb-1"><i class="bi bi-bell-fill icon_color"></i> <span class="ps-2">Subscription</span></p>
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <img src="Assert/PlanImages/netflix.png" alt="Netflix" style="width: 40px; height: 40px;">
+                            <img src="Assert/PlanImages/amazon-prime.png" alt="Amazon_Prime" style="width: 50px; height: 50px;">
+                            <img src="Assert/PlanImages/spotify.png" alt="Spotify" style="width: 40px; height: 40px;">
+                            <img src="Assert/PlanImages/youtube.png" alt="Youtube" style="width: 50px; height: 50px; padding-left: 4px;">
+                        </div>
+                        <p>✔ Additional Benefits...</p>
+                        <ul>
+                            <li>Upto 1Gb 5G data Every Day</li>
+                        </ul>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <button class="btn w-75 getplan_button" type="button" data-bs-toggle="modal" data-bs-target="#rechargeModal">Get Plan</button>
+                        </div>
+                    </div>
+                  </div>
+            </div><!--[End of Item two]-->
+
+            <div class="item item3">
+                <div class="card shadow-sm">                    
+                    <div class="card-body">
+                        <h1 class="text-start fw-bold BestSellers_price">Rs. 2023</h1>
+                        <p class="text-center">200 Days | 2.5 GB/Day</p>
+                        <span class="popular-tag position-absolute top-0 end-0 my-3 px-3 py-1 fw-bold tag">
+                            TRUE 5G
+                        </span>
+                        <br>
+                        <i class="bi bi-star-fill position-absolute top-0 end-0 p-2 mt-5 me-3 fs-3 star"></i>
+                        <p><i class="bi bi-telephone-fill icon_color"></i> <span class="ps-2">Unlimited Calls</span></p>
+                        <p><i class="bi bi-chat-dots-fill icon_color"></i> <span class="ps-2">100 SMS/Day</span></p>
+                        <p class="mb-1"><i class="bi bi-bell-fill icon_color"></i> <span class="ps-2">Subscription</span></p>
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <img src="Assert/PlanImages/amazon-prime.png" alt="Amazon_Prime" style="width: 50px; height: 50px;">
+                            <img src="Assert/PlanImages/spotify.png" alt="Spotify" style="width: 40px; height: 40px;">
+                            <img src="Assert/PlanImages/youtube.png" alt="Youtube" style="width: 50px; height: 50px; padding-left: 4px;">
+                        </div>                       
+                        <p>✔ Additional Benefits...</p>
+                        <ul>
+                            <li>Upto 1Gb 5G data Every Day</li>
+                        </ul>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <button class="btn w-75 getplan_button" type="button" data-bs-toggle="modal" data-bs-target="#rechargeModal">Get Plan</button>
+                        </div>
+                    </div>
+                  </div>
+            </div><!--[End of Item three]-->
+
+            <div class="item item4">
+                <div class="card shadow-sm">                    
+                    <div class="card-body">
+                        <h1 class="text-start fw-bold BestSellers_price">Rs. 349</h1>
+                        <p class="text-center">28 Days | 2 GB/Day</p>
+                        <span class="popular-tag position-absolute top-0 end-0 my-3 px-3 py-1 fw-bold tag">
+                            POPULAR
+                        </span>
+                        <br>
+                        <i class="bi bi-star-fill position-absolute top-0 end-0 p-2 mt-5 me-3 fs-3 star"></i>
+                        <p><i class="bi bi-telephone-fill icon_color"></i> <span class="ps-2">Unlimited Calls</span></p>
+                        <p><i class="bi bi-chat-dots-fill icon_color"></i> <span class="ps-2">100 SMS/Day</span></p>
+                        <p class="mb-1"><i class="bi bi-bell-fill icon_color"></i> <span class="ps-2">Subscription</span></p>
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <img src="Assert/PlanImages/spotify.png" alt="Spotify" style="width: 40px; height: 40px;">
+                            <img src="Assert/PlanImages/youtube.png" alt="Youtube" style="width: 50px; height: 50px; padding-left: 4px;">
+                        </div>
+                        <p>✔ Additional Benefits...</p>
+                        <ul>
+                            <li>Upto 1Gb 5G data Every Day</li>
+                        </ul>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <button class="btn w-75 getplan_button" type="button" data-bs-toggle="modal" data-bs-target="#rechargeModal">Get Plan</button>
+                        </div>
+                    </div>
+                  </div>
+            </div><!--[End of Item four]-->
+
+            <div class="item item5">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h1 class="text-start fw-bold BestSellers_price">Rs. 249</h1>
+                        <p class="text-center">28 Days | 1 GB/Day</p>
+                        <span class="popular-tag position-absolute top-0 end-0 my-3 px-3 py-1 fw-bold tag">
+                            POPULAR
+                        </span>
+                        <br>
+                        <i class="bi bi-star-fill position-absolute top-0 end-0 p-2 mt-5 me-3 fs-3 star"></i>
+                        <p><i class="bi bi-telephone-fill icon_color"></i><span class="ps-2">Unlimited Calls</span></p>
+                        <p><i class="bi bi-chat-dots-fill icon_color"></i> <span class="ps-2">100 SMS/Day</span></p>
+                        <p class="mb-1"><i class="bi bi-bell-fill icon_color"></i> <span class="ps-2">Subscription</span></p>
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <img src="Assert/PlanImages/spotify.png" alt="Spotify" style="width: 40px; height: 40px;">
+                            <img src="Assert/PlanImages/youtube.png" alt="Youtube" style="width: 50px; height: 50px; padding-left: 4px;">
+                        </div>                        
+                        <p>✔ Additional Benefits...</p>
+                        <ul>
+                            <li>Upto 500Mb 5G data Every Day</li>
+                        </ul>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <button class="btn w-75 getplan_button" type="button" data-bs-toggle="modal" data-bs-target="#rechargeModal">Get Plan</button>
+                        </div>
+                    </div>
+                  </div>
+            </div><!--[End of Item five]-->
+        </div>
+    </div>
+
+    <!-- STEPS TO RECHARGE -->
+    <div class="container py-5">
+        <h2 class="text-center mb-5">How to Recharge Your Mobile</h2>
+        <div class="timeline">
+            <div class="timeline-step">
+                <div class="timeline-icon">1</div>
+                <div class="timeline-content text-center">
+                    <h4 class="timeline_title text-center">Step 1: Visit Our Website</h4>
+                    <p>Go to our prepaid mobile recharge website and log in to your account.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-icon">2</div>
+                <div class="timeline-content text-center">
+                    <h4 class="timeline_title text-center">Step 2: Enter Your Mobile Number</h4>
+                    <p>Please enter the Mobicomm mobile number that you wish to recharge.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-icon">3</div>
+                <div class="timeline-content text-center">
+                    <h4 class="timeline_title text-center">Step 3: Choose Your Recharge Plan</h4>
+                    <p>Select the recharge plan that suits your needs from the available plans.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-icon">4</div>
+                <div class="timeline-content text-center">
+                    <h4 class="timeline_title text-center">Step 4: Complete the Payment</h4>
+                    <p>Proceed to payment and complete the transaction to recharge your mobile.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+    <!-- NEWSLETTERS  -->
+    <section class="container my-4">
+        <div class="row">
+            <div class="col">
+                <div class="card shadow mt-5 w-75 m-auto text-center">
+                    <img class="m-auto" src="Assert/homeImages/newsletter.jpg" alt="Newsletter_Image" width="45%">
+                    <h1 class="display-5 section_title">Subscribe to our Newsletter</h1>
+                    <p class="text-center px-5 py-3 section_sub_title">
+                        Subscribe to get the latest prepaid offers, discounts, and cashback deals. 
+                        Stay updated on new plans and never miss a recharge reminder!
+                    </p>
+                    <form class="w-75 m-auto" id="newsletterForm">
+                        <input type="email" class="form-control mb-2" id="emailInput" placeholder="Enter your Email">
+                        <span class="error-email text-danger d-block mb-3"></span>
+                        <button type="submit" class="btn btn-primary rounded-pill w-50 mb-md-5 subscribe_button">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Centered Modal -->
+    <div class="modal fade" id="rechargeModal" tabindex="-1" aria-labelledby="rechargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered"> <!-- Bootstrap class for centering -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title title" id="rechargeModalLabel">Instant Recharge</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="rechargeForm">
+                        <div class="mb-3">
+                            <label for="mobileNumber" class="form-label">Enter Mobile Number:</label>
+                            <input type="text" class="form-control" id="mobileNumber" placeholder="e.g., 1234567890" required>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center mt-5">
+                            <button type="submit" class="btn recharge_button">Recharge</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white mt-5 pt-5 pb-4">
+        <div class="container footer_fonts">
+            <div class="row text-center text-md-start">
+                <!-- Company Info -->
+                <div class="col-md-4 mb-4">
+                    <p class="text-uppercase fw-bold">Mobi-Comm</p>
+                    <p> Fast, secure online recharge for MobiComm SIM users. Enjoy seamless connectivity with instant top-ups anytime, anywhere.</p>
+                </div>
+    
+                <!-- Quick Navigation -->
+                <div class="col-md-3 mb-4 ps-md-5">
+                    <p class="fw-bold">Quick Navigation</p>
+                    <ul class="list-unstyled">
+                        <li><a class="text-white text-decoration-none" href="#">→ Home</a></li>
+                        <li><a class="text-white text-decoration-none" href="#">→ About</a></li>
+                        <li><a class="text-white text-decoration-none" href="#">→ View Plans</a></li>
+                        <li><a class="text-white text-decoration-none" href="#">→ Contact</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Social Media & Feedback -->
+                <div class="col-md-5">
+                    <p class="fw-bold">Follow Us On</p>
+                    <div class="d-flex justify-content-center justify-content-md-start">
+                        <i class="bi bi-facebook pe-3 fs-4"></i>
+                        <i class="bi bi-twitter-x pe-3 fs-4"></i>
+                        <i class="bi bi-linkedin pe-3 fs-4"></i>
+                        <i class="bi bi-instagram pe-3 fs-4"></i>
+                    </div>
+    
+                    <p class="mt-3 fw-bold">Your Suggestions Matters!</p>
+                    <p>Help us improve your experience. Share your thoughts below.</p>
+                    <form id="feedbackForm">
+                        <div class="mb-3">
+                            <textarea class="form-control" id="feedbackInput" placeholder="Share your feedback" rows="3"></textarea>
+                            <span class="error-feedback text-danger d-block mt-2"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-50 w-md-auto float-end submit_button">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Copyright Section -->
+            <div class="text-center mt-4">
+                <p class="mb-0">&copy; 2025 Mobi Comm. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Mobile Number validation for recharge-->
+    <script>
+       document.getElementById("rechargeButton").addEventListener("click", function(event) {
+            let mobileInput = document.getElementById("mobileNumber");
+            let errorText = document.querySelector(".error-text");
+            let mobileNumber = mobileInput.value.trim();
+            let mobileRegex = /^[6-9]\d{9}$/; // 10-digit number starting with 6-9
+
+            if (!mobileRegex.test(mobileNumber)) {
+                errorText.textContent = "Enter a valid 10-digit mobile number.";
+                mobileInput.classList.add("is-invalid");
+                event.preventDefault(); // Prevents form submission if invalid
+            } else {
+                errorText.textContent = "";
+                mobileInput.classList.remove("is-invalid");
+            }
+        });
+    </script>
+
+    <!-- Email Validation for newsletter -->
+    <script>
+        document.getElementById("newsletterForm").addEventListener("submit", function(event) {
+        let emailInput = document.getElementById("emailInput");
+        let errorText = document.querySelector(".error-email");
+        let emailValue = emailInput.value.trim();
+        let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!emailRegex.test(emailValue)) {
+            errorText.textContent = "Please enter a valid email address.";
+            emailInput.classList.add("is-invalid");
+            event.preventDefault(); // Prevents form submission if invalid
+        } else {
+            errorText.textContent = "";
+            emailInput.classList.remove("is-invalid");
+        }
+    });  
+    </script>  
+
+    <!-- Feedback Validation -->
+    <script>
+        document.getElementById("feedbackForm").addEventListener("submit", function(event) {
+            let feedbackInput = document.getElementById("feedbackInput");
+            let errorText = document.querySelector(".error-feedback");
+            let feedbackValue = feedbackInput.value.trim();
+    
+            if (feedbackValue.length < 5) {
+                errorText.textContent = "Feedback must be at least 5 characters long.";
+                feedbackInput.classList.add("is-invalid");
+                event.preventDefault(); // Prevents form submission if invalid
+            } else {
+                errorText.textContent = "";
+                feedbackInput.classList.remove("is-invalid");
+            }
+        });
+    
+        // Remove error message when the user starts typing again
+        document.getElementById("feedbackInput").addEventListener("input", function() {
+            let errorText = document.querySelector(".error-feedback");
+            if (this.value.trim().length >= 5) {
+                errorText.textContent = "";
+                this.classList.remove("is-invalid");
+            }
+        });
+    </script>
+
+    <!-- Benefits and Security -->
+    <script>
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                center: true,
+                items: 3,
+                margin: 10,
+                autoplay: true,
+                dots: true,
+                autoplayTimeout: 2000,
+                smartSpeed: 450,
+                responsive: {
+                    0: { items: 1 },
+                    768: { items: 2 },
+                    1170: { items: 3 }
+                }
+            });
+        });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,425 @@
+body{
+    font-family: "Poppins", serif;
+}
+.header {
+    padding-top: 100px; 
+}
+.header_icon_color{
+    color: #023E8A;
+}
+.logo{
+    color: #023E8A;
+    font-weight: bold;
+}
+.logo_first_letter{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: xx-large;
+}
+.sub_logo{
+    font-size: medium;
+}
+.Banner {
+    height: 50vh; 
+    width: 90%;
+    /* background-color: #0096C7; */
+    background-color: #023E8A;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    font-size: larger;
+}
+.banner_heading{
+    color: white;
+}
+.banner_slogan{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.title{
+    letter-spacing: 2px;
+    color: #023E8A;
+    font-size: 25px;
+}
+
+.Mobile_recharge{
+    /* background-color: #CAF0F8; */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.text_label{
+    color: black;
+    font-size: large;
+}
+.secure_button{
+    background-color: #023E8A;
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.recharge_button {
+    background-color: #023E8A;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    letter-spacing: 2px;
+}
+
+/* Hover Effect */
+.recharge_button:hover {
+    color: white;
+    background-color: #0077B6; /* Lighter shade for a nice effect */
+    box-shadow: 0 4px 10px rgba(0, 119, 182, 0.4); /* Adds a glow effect */
+    transform: scale(1.05); /* Slightly enlarges the button */
+}
+
+/* Active Effect (When Clicked) */
+.recharge_button:active {
+    background-color: #0096C7;
+    transform: scale(0.98); /* Slight press effect */
+}
+.error-text {
+    color: red;
+    font-size: small;
+    min-height: 20px; /* Reserves space even when empty */
+    display: block; /* Ensures it does not affect layout */
+}
+/* .section-2{
+    height: 100vh;
+} */
+.faq_section{
+    margin-top: 30px;
+}
+.subscribe_button {
+    background-color: #023E8A;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    letter-spacing: 2px;
+}
+/* Button */
+.subscribe_button {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    border-radius: 10rem;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 0.15rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.subscribe_button:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0099cc;
+    border-radius: 10rem;
+    z-index: -2;
+}
+.subscribe_button:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #023E8A;
+    transition: all 0.3s;
+    border-radius: 10rem;
+    z-index: -1;
+}
+.subscribe_button:hover {
+    color: #fff;
+}
+.subscribe_button:hover:before {
+    width: 100%;
+}
+
+.submit_button{
+    background-color: #023E8A;
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+    border: none;
+}
+.faq{
+    margin-top: 100px;
+}
+.benifit_card{
+    height: 100%;
+}
+
+.BestSellers_price{
+    font-size: 40px;
+}
+.tag{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    font-size: large;
+    /* background-color: #0d47a1; */
+    background-color: #003554;
+    color: white;
+    /* background-color: linear-gradient(to right top, #a46bd1, #966bd4, #856bd7, #736cda, #5c6cdc, #487be7, #3089f0, #0097f7, #00b4ff, #00ceff, #00e5fa, #5ffbf1);; */
+}
+.star{
+    font-size: large;
+    color: #023E8A;
+}
+.getplan_button{
+    color: white;
+    background-color: #003554;
+}
+
+
+
+
+.banner_data{
+    color: white;
+}
+.banner_value{
+    font-size: xx-large;
+}
+.Banner_logo{
+    font-family: "Oleo Script Swash Caps", system-ui;
+    letter-spacing: 1px;
+    font-weight: bolder;
+    font-size: 50px;
+}
+.card {
+ width: 100%;
+ border-radius: 10px;
+}
+
+.card img {
+   border-radius: 10px 10px 0 0;
+   object-fit: cover;
+}
+
+i.fa-star {
+   color: orangered;
+}
+
+.btn-group i {
+   color: orangered;
+}
+
+.btn-group button:hover {
+   background-color: orange;
+}
+
+.btn-group button:hover i.fa-solid {
+   color: black;
+}
+
+.card-body h2 {
+   font-size: 1.2em;
+   text-transform: capitalize;
+}
+
+/* Indicators */
+.owl-theme .owl-dots .owl-dot.active span, 
+.owl-theme .owl-dots .owl-dot:hover span {
+   /* background: #0077B6; */
+   background: #48CAE4;
+   width: 30px;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+width: 15px;
+height: 15px;
+/* background: orangered; */
+background: #023E8A;
+transition: all .2s ease;
+}
+
+/* Controls */
+/* button element */
+.owl-carousel .owl-nav button.owl-next, 
+.owl-carousel .owl-nav button.owl-prev {
+position: relative;
+/* background-color: rgba(255, 166, 0, 0.3); */
+width: 30px;
+padding: 5px;
+}
+
+.owl-carousel .owl-nav button.owl-next:hover, 
+.owl-carousel .owl-nav button.owl-prev:hover {
+background-color: #0077B6;
+}
+
+.owl-carousel .owl-nav button.owl-next::before, 
+.owl-carousel .owl-nav button.owl-prev::before {
+width: 100%;
+height: 100%;
+color: #0077B6;
+/* inset: 0;
+position: absolute; */
+}
+
+.owl-carousel .owl-nav button.owl-next::before {
+content:'\f061'; /*unicode for arrow-right*/
+font-family: 'Font Awesome 5 Free'; /* Font family for Font Awesome */
+font-weight: 900; /* Font weight for the solid style (fas) */
+margin-right: 5px; 
+}
+
+.owl-carousel .owl-nav button.owl-prev::before {
+content:'\f060'; /*unicode for arrow-left*/
+font-family: 'Font Awesome 5 Free'; /* Font family for Font Awesome */
+font-weight: 900; /* Font weight for the solid style (fas) */
+margin-right: 5px; 
+}
+
+.owl-carousel .owl-nav .owl-next [aria-label="Next"], 
+.owl-carousel .owl-nav .owl-prev [aria-label="Previous"]{
+visibility:hidden /*The Span element*/
+}
+
+/* 3D Spinner */
+.owl-carousel .item {
+/* text-align: center; */
+padding: 50px;
+margin-bottom:10px;
+opacity: .2;
+-webkit-transform: scale3d(0.8, 0.8, 1);
+transform: scale3d(0.8, 0.8, 1);
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+transition: all 0.3s ease-in-out;
+}
+.owl-carousel .owl-item.active.center .item {
+opacity: 1;
+-webkit-transform: scale3d(1.0, 1.0, 1);
+transform: scale3d(1.0, 1.0, 1);
+}
+
+.BestSeller_heading{
+    background-color: #023E8A; /* Blue color */
+    color: white;
+    padding-left: 60px;
+    padding-right: 45px;
+    clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%, 15% 50%);
+}
+.verticle_line{
+    border-right: 2px solid white;
+    align-items: center;
+}
+.Banner_slogan{
+    font-family: "Caveat Brush", cursive;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 1px;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+.timeline_title{
+    color: #023E8A;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: #ddd;
+    left: 50%;
+    margin-left: -2px;
+}
+
+.timeline-step {
+    padding: 20px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.timeline-step:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-step:nth-child(even) {
+    left: 50%;
+    text-align: left;
+}
+
+.timeline-icon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.5em;
+    top: 20px;
+}
+
+.timeline-step:nth-child(odd) .timeline-icon {
+    right: -25px;
+}
+
+.timeline-step:nth-child(even) .timeline-icon {
+    left: -25px;
+}
+
+.timeline-content {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    position: relative;
+}
+
+.timeline-step:nth-child(odd) .timeline-content {
+    margin-right: 30px;
+}
+
+.timeline-step:nth-child(even) .timeline-content {
+    margin-left: 30px;
+}
+
+@media (max-width: 767.98px) {
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-step {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    .timeline-step:nth-child(odd),
+    .timeline-step:nth-child(even) {
+        left: 0;
+        text-align: left;
+    }
+
+    .timeline-step:nth-child(odd) .timeline-icon,
+    .timeline-step:nth-child(even) .timeline-icon {
+        left: 10px;
+        right: auto;
+    }
+
+    .timeline-step:nth-child(odd) .timeline-content,
+    .timeline-step:nth-child(even) .timeline-content {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

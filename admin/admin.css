@@ -1,0 +1,66 @@
+body {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    font-family: "Poppins", serif;
+  }
+  .logo{
+    color: #03045E;
+    font-size: medium;
+  }
+  .sub_logo{
+    font-family: "Oleo Script Swash Caps", system-ui;
+    font-size: xx-large;
+  }
+  .sidebar {
+    width: 25%;
+    background-color: #023E8A;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  .main-content {
+    margin-left: 25%;
+    width: 75%;
+    background-color: #f8f9fa;
+  }
+  .nav-link{
+    color: white;
+  }
+  .active{
+    background-color: white;
+    color: #03045E;
+    border-radius: 3px;
+  }
+  .navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 5px 20px;
+  }
+  .admin-icon {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #007bff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+  }
+  .offcanvas {
+    width: 250px !important; /* Width of the off-canvas sidebar */
+  }
+  @media (max-width: 768px) {
+    .sidebar {
+      display: none; /* Hide sidebar on smaller screens */
+    }
+    .main-content {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+  .card {
+    margin-bottom: 20px;
+  }

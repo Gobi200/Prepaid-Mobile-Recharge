@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrePaid Mobile Recharge</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custome CSS -->
+     <link rel="stylesheet" type="text/css" href="user.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <!-- NAVIGATION BAR -->
+    <div class="header">
+        <nav class="navbar navbar-expand-md bg-body-tertiary fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand logo" href="Home.html"><span class="logo_first_letter">M</span><span class="sub_logo">obiComm</span></a>
+                <div class="d-flex align-items-center">
+                    <!-- User Dropdown -->
+                    <div class="dropdown">
+                        <a href="#" class="me-3 dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle profile_icon fs-4"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="#" onclick="showSection('dashboard')">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="showSection('profile')">Profile</a></li>
+                            <li><a class="dropdown-item" href="userLogin.html">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Offcanvas Navigation (Only for Mobile & Tablet Screens) -->
+        <div class="offcanvas offcanvas-end d-md-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="navbar-nav">
+                    <a class="nav-link nav_font" href="Home.html">Home</a>
+                    <a class="nav-link nav_font" href="about.html">About</a>
+                    <a class="nav-link nav_font" href="viewPlans.html">View Plans</a>
+                    <a class="nav-link nav_font" href="contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboard">
+        <div class="text-center">
+            <p class="display-5 mb-0">Dashboard</p>
+            <p class="mb-0">Here is the detailed description about your plan</p>
+        </div>
+        <div class="container mt-2 pt-3">
+            <div class="row">
+                <!-- Plan Details Card -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body shadow">
+                            <p class="text-center card_heading">Plan Details</p>
+                            <div class="d-flex justify-content-between">
+                                <p class="current_plan"><strong><i class="bi bi-currency-rupee"></i>449</strong></p>
+                                <p class="d-flex justify-content-center align-items-center bg-warning px-4 fw-bold rounded-3 expiry_text">
+                                    Expiring in 7 Days
+                                </p>
+                            </div>
+                            <p>56 Days | 2 GB/Day</p>
+                            <p><strong>Expires on:</strong> March 15, 2025</p>
+    
+                            <!-- Linear Progress Bar -->
+                            <div class="progress">
+                                <div class="progress-done shadow" data-done="70">
+                                    <span class="progress-percent">70%</span>
+                                </div>
+                            </div>
+    
+                            <div class="d-flex justify-content-center mt-5 gap-5">
+                                <button class="recharge_button w-25">Recharge</button>
+                                <button class="btn btn-outline-primary w-25" onclick="viewPlan()">View Plan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Data Usage Card -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body shadow">
+                            <p class="text-center card_heading">Data Usage</p>
+                            <div class="d-flex justify-content-evenly align-items-center">
+                                
+                                <!-- Circular Progress -->
+                                <div class="progress-container">
+                                    <svg class="progress-circle" width="100" height="100" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="45" fill="none" stroke="#e0e0e0" stroke-width="10" />
+                                        <circle class="progress-ring" cx="50" cy="50" r="45" fill="none" stroke="#4caf50" 
+                                            stroke-width="10" stroke-linecap="round" stroke-dasharray="282.74" stroke-dashoffset="282.74" />
+                                    </svg>
+                                    <div class="progress-text">
+                                        Data left<br> <span style="font-size: 24px;">0%</span>
+                                    </div>
+                                </div>
+    
+                                <div class="d-flex flex-column align-items-center justify-content-center float-md-end">
+                                    <p><b>Used :</b> 500MB</p>
+                                    <p><b>Remaining :</b> 1.5 GB</p>
+                                </div>
+                            </div>
+    
+                            <div class="d-flex justify-content-center mt-5 pt-1 gap-5">
+                                <button class="Data_add_on_button w-25">Data Add-on</button>
+                                <button class="btn btn-outline-primary w-25" onclick="viewPlan()">View Plan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Transaction History Table -->
+        <div class="container my-5">
+            <h3 class="text-center">Transaction History</h3>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="table_head">
+                        <tr>
+                            <th>S.NO</th>
+                            <th>Plan Price</th>
+                            <th>Plan Details</th>
+                            <th>Date</th>
+                            <th>Payment Mode</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>₹449</td>
+                            <td>56 Days | 2.5 GB/Day</td>
+                            <td>20-Nov-2024</td>
+                            <td>Credit Card</td>
+                            <td class="status-success">Success</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>₹299</td>
+                            <td>28 Days | 1.5 GB/Day</td>
+                            <td>12-Dec-2025</td>
+                            <td>UPI</td>
+                            <td class="status-failed">Failed</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>₹599</td>
+                            <td>84 Days | 3 GB/Day</td>
+                            <td>22-Feb-2025</td>
+                            <td>Debit Card</td>
+                            <td class="status-success">Success</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="profile-section" class="container mt-4" style="display: none;">
+        <p class="display-5 text-center">Profile Information</p>
+        <div class="card p-4 shadow">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="username" class="form-label">User Name</label>
+                    <input type="text" id="username" class="form-control" value="Kumar" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-control" value="kumar@gmail.com" disabled>
+                </div>
+            </div>
+    
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label for="mobile" class="form-label">Mobile Number</label>
+                    <input type="text" id="mobile" class="form-control" value="9876543210" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label for="dob" class="form-label">Date of Birth</label>
+                    <input type="date" id="dob" class="form-control" value="1995-08-15" disabled>
+                </div>
+            </div>
+    
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" id="address" class="form-control" value="123 Main Street" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" id="city" class="form-control" value="Mumbai" disabled>
+                </div>
+            </div>
+    
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <label for="pincode" class="form-label">Pincode</label>
+                    <input type="text" id="pincode" class="form-control" value="400001" disabled>
+                </div>
+                <div class="col-md-4">
+                    <label for="state" class="form-label">State</label>
+                    <input type="text" id="state" class="form-control" value="Maharashtra" disabled>
+                </div>
+                <div class="col-md-4">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" id="country" class="form-control" value="India" disabled>
+                </div>
+            </div>
+    
+            <div class="text-center mt-4">
+                <button class="btn btn-primary" id="edit-btn" onclick="editProfile()"><i class="bi bi-pen"></i>  Edit</button>
+                <button class="btn btn-success d-none" id="save-btn" onclick="saveProfile()"><i class="bi bi-floppy2"></i>  Save</button>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            /*** Animate Linear Progress Bar ***/
+            const progressBar = document.querySelector('.progress-done');
+            const progressValue = progressBar.getAttribute('data-done'); 
+            setTimeout(() => {
+                progressBar.style.width = progressValue + '%';
+                progressBar.style.opacity = 1;
+            }, 500); 
+
+            /*** Animate Circular Progress ***/
+            let progress = 75; // Change this value dynamically
+            let circumference = 2 * Math.PI * 45; // 2πr
+            let offset = circumference - (progress / 100) * circumference;
+            
+            const progressRing = document.querySelector('.progress-ring');
+            const progressText = document.querySelector('.progress-text span');
+
+            setTimeout(() => {
+                progressRing.style.strokeDashoffset = offset;
+                progressText.innerText = progress + "%";
+            }, 500);
+        });
+
+        function showSection(section) {
+            if (section === "dashboard") {
+                document.getElementById("dashboard").style.display = "block";
+                document.getElementById("profile-section").style.display = "none";
+            } 
+            else if (section === "profile") {
+                document.getElementById("dashboard").style.display = "none";
+                document.getElementById("profile-section").style.display = "block";
+            }
+        }
+
+        function viewPlan() {
+            window.location.href = 'viewPlans.html';
+        }
+    </script>
+
+    
+    <script>
+        function editProfile() {
+        let inputs = document.querySelectorAll("#profile-section input");
+        inputs.forEach(input => {
+            if (input.id !== "mobile") { // Keep mobile number uneditable
+                input.disabled = false;
+            }
+        });
+        document.getElementById("edit-btn").classList.add("d-none");
+        document.getElementById("save-btn").classList.remove("d-none");
+        }
+    
+        function saveProfile() {
+            let fields = document.querySelectorAll("#profile-section input");
+            fields.forEach(field => field.setAttribute("disabled", "true"));
+    
+            document.getElementById("edit-btn").classList.remove("d-none");
+            document.getElementById("save-btn").classList.add("d-none");
+    
+            alert("Profile updated successfully!");
+        }
+    </script>
+    
+
+</body>
+</html>

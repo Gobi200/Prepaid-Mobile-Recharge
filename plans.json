@@ -1,0 +1,170 @@
+{
+  
+  
+    "rechargeData": [
+        { "id": 1, "name": "John Doe", "email": "john@example.com", "mobile": "9876543210", "plan": "₹ 299 Plan", "date": "2023-10-25 10:30 AM" },
+        { "id": 2, "name": "Jane Smith", "email": "jane@example.com", "mobile": "9876543211", "plan": "₹ 499 Plan", "date": "2023-10-26 11:45 AM" },
+        { "id": 3, "name": "Alice Johnson", "email": "alice@example.com", "mobile": "9876543212", "plan": "₹ 199 Plan", "date": "2023-10-27 09:15 AM" }
+    ],
+
+    "bestseller": [
+        {
+            "price": "Rs. 5000",
+            "tag": "Popular",
+            "validity": "57 Days",
+            "data": "2 GB/Day",
+            "calls": "Unlimited Calls",
+            "sms": "100 SMS/Day",
+            "subscription": "Subscription",
+            "benefits": ["Upto 1Gb 5G data Every Day"],
+            "icons": [
+                "Assert/PlanImages/amazon-prime.png",
+                "Assert/PlanImages/spotify.png",
+                "Assert/PlanImages/youtube.png"
+            ]
+        },
+        {
+            "price": "Rs. 1227",
+            "validity": "57 Days",
+            "tag": "Popular",
+            "data": "2 GB/Day",
+            "calls": "Unlimited Calls",
+            "sms": "100 SMS/Day",
+            "subscription": "Subscription",
+            "benefits": ["Upto 1Gb 5G data Every Day"],
+            "icons": [
+                "Assert/PlanImages/amazon-prime.png",
+                "Assert/PlanImages/spotify.png",
+                "Assert/PlanImages/youtube.png"
+            ]
+        }
+    ],
+  
+  "PopularPlans": [
+      {
+          "id": 1,
+          "price": 3599,
+          "validity": "365 Days",
+          "data": "2.5 GB/Day",
+          "calls": "Unlimited Calls",
+          "sms": "100 SMS/Day",
+          "subscriptions": ["Amazon Prime", "Hotstar","Spotify", "YouTube"],
+          "benefit": "1.5 GB of 5G data every Day",
+          "tag": "Popular"
+      },
+      {
+        "id": 2,
+        "price": 2025,
+        "validity": "200 Days",
+        "data": "2.5 GB/Day",
+        "calls": "Unlimited Calls",
+        "sms": "100 SMS/Day",
+        "subscriptions": ["Amazon Prime", "Spotify", "YouTube"],
+        "benefit": "1.5 GB of 5G data every Day",
+        "tag": "Popular"
+    },
+    {
+      "id": 3,
+      "price": 999,
+      "validity": "98 Days",
+      "data": "2 GB/Day",
+      "calls": "Unlimited Calls",
+      "sms": "100 SMS/Day",
+      "subscriptions": ["Amazon Prime", "Spotify"],
+      "benefit": "1GB of 5G data every Day",
+      "tag": "Popular"
+  },
+  {
+    "id": 4,
+    "price": 899,
+    "validity": "90 Days",
+    "data": "2 GB/Day + 20 GB",
+    "calls": "Unlimited Calls",
+    "sms": "100 SMS/Day",
+    "subscriptions": ["Amazon Prime", "Spotify"],
+    "benefit": "1GB of 5G data every Day",
+    "tag": "Popular"
+  },
+  {
+    "id": 5,
+    "price": 349,
+    "validity": "28 Days",
+    "data": "2 GB/Day",
+    "calls": "Unlimited Calls",
+    "sms": "100 SMS/Day",
+    "subscriptions": ["Amazon Prime", "Spotify"],
+    "benefit": "1GB of 5G data every Day",
+    "tag": "Popular"
+  },
+  {
+    "id": 6,
+    "price": 1299,
+    "validity": "84 Days",
+    "data": "2 GB/Day",
+    "calls": "Unlimited Calls",
+    "sms": "100 SMS/Day",
+    "subscriptions": ["Amazon Prime", "Spotify"],
+    "benefit": "1GB of 5G data every Day",
+    "tag": "Popular"
+  }
+  ],
+  "True5GUnlimited" : [
+    {
+      "id": 7,
+      "price": 3999,
+      "validity": "365 Days",
+      "data": "2.5 GB/Day",
+      "calls": "Unlimited Calls",
+      "sms": "100 SMS/Day",
+      "subscriptions": ["Amazon Prime", "Hotstar","Spotify", "YouTube"],
+      "benefit": "1.5 GB of 5G data every Day",
+      "tag": "5G Unlimited"
+  },
+  {
+      "id": 8,
+      "price": 1799,
+      "validity": "84 Days",
+      "data": "3 GB/Day",
+      "calls": "Unlimited Calls",
+      "sms": "100 SMS/Day",
+      "subscriptions": ["Amazon Prime", "Hotstar","Spotify", "YouTube"],
+      "benefit": "1.5 GB of 5G data every Day",
+      "tag": "5G Unlimited" 
+  },
+  {
+    "id": 9,
+    "price": 1299,
+    "validity": "84 Days",
+    "data": "2 GB/Day",
+    "calls": "Unlimited Calls",
+    "sms": "100 SMS/Day",
+    "subscriptions": ["Amazon Prime", "Hotstar","Spotify", "YouTube"],
+    "benefit": "1.5 GB of 5G data every Day",
+    "tag": "5G Unlimited" 
+},
+{
+    "id": 10,
+    "price": 1049,
+    "validity": "84 Days",
+    "data": "2 GB/Day",
+    "calls": "Unlimited Calls",
+    "sms": "100 SMS/Day",
+    "subscriptions": ["Hotstar","Spotify", "YouTube"],
+    "benefit": "1.5 GB of 5G data every Day",
+    "tag": "5G Unlimited" 
+}
+  ],
+  "AnnualPlans" : [
+    {
+      "id": 1,
+      "price": 2999,
+      "validity": "365 Days",
+      "data": "2 GB/Day",
+      "calls": "Unlimited Calls",
+      "sms": "100 SMS/Day",
+      "subscriptions": ["Amazon Prime", "Hotstar","Spotify", "YouTube"],
+      "benefit": "1.5 GB of 5G data every Day",
+      "tag": "Annual Plan"
+    }
+  ]
+}

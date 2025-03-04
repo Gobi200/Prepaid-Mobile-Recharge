@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrePaid Mobile Recharge</title>
+    <!-- Bootstrap Css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- CSS FILE -->
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="viewPlans.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <div class="header">
+        <nav class="navbar navbar-expand-md bg-body-tertiary fixed-top">
+            <div class="container-fluid">
+                 <!-- Navbar Brand (Left) -->
+                 <a class="navbar-brand logo" href="Home.html"><span class="logo_first_letter">M</span><span class="sub_logo">obiComm</span></a>
+
+                <!-- Navbar Links -->
+                <div class="d-none d-md-flex justify-content-center flex-grow-1">
+                    <div class="navbar-nav">
+                        <a class="nav-link nav_font" href="Home.html">Home</a>
+                        <a class="nav-link nav_font" href="about.html">About</a>
+                        <a class="nav-link active nav_font fw-bold" href="viewPlans.html">View Plans</a>
+                        <a class="nav-link nav_font" href="contact.html">Contact</a>
+                    </div>
+                </div>
+
+                <!-- User Icon & Offcanvas Toggle -->
+                <div class="d-flex align-items-center">
+                    <a href="userLogin.html" class="me-3"><i class="bi bi-person-circle icon_color fs-4"></i></a>
+                    <button class="btn btn-outline-secondary d-md-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+                        <i class="bi bi-list fs-3"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Offcanvas Navigation -->
+        <div class="offcanvas offcanvas-end d-md-none" tabindex="-1" id="offcanvasNavbar">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="Home.html" data-bs-dismiss="offcanvas">Home</a>
+                    <a class="nav-link" href="about.html" data-bs-dismiss="offcanvas">About</a>
+                    <a class="nav-link active fw-bold" href="viewPlans.html">View Plans</a>
+                    <a class="nav-link" href="contact.html" data-bs-dismiss="offcanvas">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <div class="row">
+
+            <!-- Category -->
+            <div class="col-md-3 col-12 mb-2">
+                <div class="card position-sticky" style="top: 100px; max-height: calc(100vh - 120px); overflow-y: auto;">
+                    <div class="card-body rounded-3 text-center category_card">
+                        <h1 class="display-6 text-center pb-4 fw-bold">Plan Category</h1>
+                        <ul class="nav nav-pills d-flex flex-md-column flex-row flex-wrap justify-content-center gap-2" id="categoryTabs" role="tablist">
+                            <li class="nav-item">
+                                <button class="nav-link active w-100 cat_name" id="cat1-tab" data-bs-toggle="pill" data-bs-target="#cat1">Popular Plans</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link w-100 cat_name" id="cat2-tab" data-bs-toggle="pill" data-bs-target="#cat2">True 5G Unlimited</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link w-100 cat_name" id="cat3-tab" data-bs-toggle="pill" data-bs-target="#cat3">Annual Plans</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link w-100 cat_name" id="cat4-tab" data-bs-toggle="pill" data-bs-target="#cat4">Data Packs</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link w-100 cat_name" id="cat5-tab" data-bs-toggle="pill" data-bs-target="#cat5">Top-Up Packs</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link w-100 cat_name" id="cat6-tab" data-bs-toggle="pill" data-bs-target="#cat6">Value Plans</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- Items Section -->
+            <div class="col-md-9 col-12">
+                <div class="tab-content" id="categoryContent">
+                    <div class="tab-pane fade show active ms-md-5" id="cat1">
+                        <div class="d-flex justify-content-center justify-content-md-between align-items-center mb-3">
+                            <h2 class="display-6 text-center flex-grow-1">Popular Plans</h2>
+                            <i class="bi bi-funnel-fill fs-4 ms-3" role="button" data-bs-toggle="modal" data-bs-target="#filterModal"></i>
+                        </div>
+                        <div class="row" id="plansContainer-cat1">
+                             
+
+                        </div>
+                    </div>
+
+                    <!-- Other categories -->
+                    <div class="tab-pane fade ms-md-5" id="cat2">
+                        <div class="d-flex justify-content-center justify-content-md-between align-items-center mb-3">
+                            <h2 class="display-6 text-center flex-grow-1">True 5G Unlimited Plans</h2>
+                            <i class="bi bi-funnel-fill fs-4 ms-3" role="button" data-bs-toggle="modal" data-bs-target="#filterModal"></i>
+                        </div>
+                        <div class="row" id="plansContainer-cat2">
+                    
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade ms-md-5" id="cat3">
+                        <div class="d-flex justify-content-center justify-content-md-between align-items-center mb-3">
+                            <h2 class="display-6 text-center flex-grow-1">Annual Plans</h2>
+                            <i class="bi bi-funnel-fill fs-4 ms-3" role="button" data-bs-toggle="modal" data-bs-target="#filterModal"></i>
+                        </div>
+                        <div class="row" id="plansContainer-cat3">
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade ms-md-5" id="cat4">
+                        <div class="d-flex justify-content-center justify-content-md-between align-items-center mb-3">
+                            <h2 class="display-6 text-center flex-grow-1">Data Packs</h2>
+                            <i class="bi bi-funnel-fill fs-4 ms-3" role="button" data-bs-toggle="modal" data-bs-target="#filterModal"></i>
+                        </div>
+                        <div class="row" id="plansContainer-cat4">
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade ms-md-5" id="cat5">
+                        <div class="d-flex justify-content-center justify-content-md-between align-items-center mb-3">
+                            <h2 class="display-6 text-center flex-grow-1">Top - Up Packs</h2>
+                            <i class="bi bi-funnel-fill fs-4 ms-3" role="button" data-bs-toggle="modal" data-bs-target="#filterModal"></i>
+                        </div>
+                        <div class="row" id="plansContainer-cat5">
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade ms-md-5" id="cat6">
+                        <div class="d-flex justify-content-center justify-content-md-between align-items-center mb-3">
+                            <h2 class="display-6 text-center flex-grow-1">Value Plans</h2>
+                            <i class="bi bi-funnel-fill fs-4 ms-3" role="button" data-bs-toggle="modal" data-bs-target="#filterModal"></i>
+                        </div>
+                        <div class="row" id="plansContainer-cat6">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="filterModalLabel">Filter Plans</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+    
+                    <!-- Price Range (Dropdown) -->
+                    <div class="mb-3">
+                        <label class="form-label">Price Range</label>
+                        <select class="form-select">
+                            <option value="">Select Price Range</option>
+                            <option>₹1 - ₹500</option>
+                            <option>₹501 - ₹1000</option>
+                            <option>₹1001 - ₹1500</option>
+                            <option>₹1501 - ₹2000</option>
+                            <option>Above ₹2000</option>
+                        </select>
+                    </div>
+    
+                    <!-- Data Allowance (Custom Styled Range Slider) -->
+                    <div class="mb-3">
+                        <label class="form-label">Data Per Day</label>
+                        <div class="d-flex justify-content-between">
+                            <span>1GB</span>
+                            <span>1.5GB</span>
+                            <span>2GB</span>
+                            <span>2.5GB</span>
+                        </div>
+                        <input type="range" class="custom-range" id="dataRange" min="1" max="4" step="1">
+                    </div>
+    
+                    <!-- Validity (Custom Styled Radio Buttons) -->
+                    <div class="mb-3">
+                        <label class="form-label">Validity</label>
+                        <div class="form-check">
+                            <input class="form-check-input custom-radio" type="radio" name="validity" value="28">
+                            <label class="form-check-label">28 Days</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input custom-radio" type="radio" name="validity" value="56">
+                            <label class="form-check-label">56 Days</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input custom-radio" type="radio" name="validity" value="84">
+                            <label class="form-check-label">84 Days</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input custom-radio" type="radio" name="validity" value="365">
+                            <label class="form-check-label">1 Year</label>
+                        </div>
+                    </div>
+    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Apply Filters</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const categories = {
+        cat1: "PopularPlans",
+        cat2: "True5GUnlimited",
+        cat3: "AnnualPlans",
+        cat4: "DataPacks",
+        cat5: "TopUpPacks",
+        cat6: "ValuePlans"
+    };
+
+    Object.entries(categories).forEach(([tabId, apiEndpoint]) => {
+        fetchPlans(tabId, apiEndpoint);
+    });
+
+    function fetchPlans(tabId, apiEndpoint) {
+        fetch(`http://localhost:3000/${apiEndpoint}`)
+            .then(response => response.json())
+            .then(data => {
+                const plansContainer = document.querySelector(`#${tabId} .row`);
+                plansContainer.innerHTML = ""; // Clear existing content
+
+                if (!data || data.length === 0) {
+                    plansContainer.innerHTML = "<p class='text-center'>No plans available.</p>";
+                    return;
+                }
+
+                data.forEach(plan => {
+                    let subscriptionIcons = plan.subscriptions.length > 0 
+                        ? plan.subscriptions.map(sub => 
+                            `<img src="Assert/PlanImages/${sub.toLowerCase().replace(/ /g, '-')}.png" 
+                            alt="${sub}" style="width: 40px; height: 40px;">`
+                        ).join(' ') 
+                        : "<p>No subscriptions available.</p>";
+
+                    let planCard = `
+                        <div class="col-md-6 mb-3">
+                            <div class="card plan_card">
+                                <div class="card-header text-white fs-4 text-start d-inline-block plan_card_head">
+                                    <span class="plan_price fw-bold fs-1 d-inline-block">₹${plan.price}</span>
+                                    <br>
+                                    <span class="d-block plan_span p-1">${plan.validity} | ${plan.data}</span>
+                                    <span class="popular-tag position-absolute top-0 end-0 my-3 px-3 py-1 fw-bold tag">
+                                        ${plan.tag}
+                                    </span>
+                                </div>
+                                <div class="card-body plan_card_body">
+                                    <p><i class="bi bi-telephone-fill icon_color"></i> ${plan.calls}</p>
+                                    <p><i class="bi bi-wifi icon_color"></i> ${plan.data}</p>
+                                    <p><i class="bi bi-alarm-fill icon_color"></i> Validity: ${plan.validity}</p>
+                                    <p><i class="bi bi-chat-dots-fill icon_color"></i> ${plan.sms}</p>
+                                    <p><i class="bi bi-bell-fill icon_color"></i> Subscription:</p>
+                                    <p>${subscriptionIcons}</p>
+                                    <p>✔ Benefits:</p>
+                                    <ul>
+                                        <li>${plan.benefit}</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer p-3">
+                                    <button class="buy_button" onclick="redirectToPurchase(${plan.price}, 
+                                    '${plan.validity}', 
+                                    '${plan.data}', 
+                                    '${plan.calls}', 
+                                    '${plan.sms}', 
+                                    '${plan.subscriptions.join(', ')}', 
+                                    '${plan.benefit.replace(/'/g, "\\'")}')"> Get Plan </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    plansContainer.innerHTML += planCard;
+                });
+            })
+            .catch(error => {
+                console.error(`Error loading plans for ${apiEndpoint}:`, error);
+                document.querySelector(`#${tabId} .row`).innerHTML = "<p class='text-center text-danger'>Error loading plans. Please try again later.</p>";
+            });
+    }
+});
+    </script>
+    
+    <script>
+        function redirectToPurchase(price, validity, data, calls, sms, subscription, benefit) {
+    const button = event.target;
+
+    // Disable the button and show a loader (spinner)
+    button.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Processing...`;
+    button.disabled = true;
+
+    // Encode data to safely pass in URL
+    const params = new URLSearchParams({
+        price,
+        validity,
+        data,
+        calls,
+        sms,
+        subscription,
+        benefit
+    });
+
+    // Redirect after slight delay (mimic processing)
+    setTimeout(() => {
+        window.location.href = `payment.html?${params.toString()}`;
+    }, 1500);
+}
+
+    </script>
+    
+</body>
+</html>

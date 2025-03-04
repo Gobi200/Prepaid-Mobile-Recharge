@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrePaid Mobile Recharge</title>
+    <!-- Bootstrap Css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Bootstarp Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- CSS FILE -->
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="about.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        .blog-slider {
+            width: 95%;
+            max-width: 1000px;
+            background: #fff;
+            box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+            padding: 25px;
+            border-radius: 25px;
+            overflow: hidden;
+            margin-top: 100px;
+            padding-top: 50px;
+        }
+
+        .blog-slider__item {
+            display: flex;
+            align-items: flex-start; /* Fix text movement issue */
+            height: auto; /* Adjust height based on your content */
+            overflow: hidden; /* Optional */
+            flex-direction: row; /* Default layout */
+        }
+    </style>
+    
+</head>
+<body>
+    <!-- NAVIGATION BAR -->
+    <div class="header">
+        <nav class="navbar navbar-expand-md bg-body-tertiary fixed-top">
+            <div class="container-fluid">
+                <!-- Navbar Brand (Left) -->
+                <a class="navbar-brand logo" href="Home.html"><span class="logo_first_letter">M</span><span class="sub_logo">obiComm</span></a>
+        
+                <!-- Navbar Links (Visible on Medium and Larger Screens) -->
+                <div class="d-none d-md-flex justify-content-center flex-grow-1">
+                    <div class="navbar-nav">
+                        <a class="nav-link nav_font" href="Home.html">Home</a>
+                        <a class="nav-link active nav_font fw-bold" href="about.html">About</a>
+                        <a class="nav-link nav_font" href="viewPlans.html">View Plans</a>
+                        <a class="nav-link nav_font" href="contact.html">Contact</a>
+                    </div>
+                </div>
+        
+                <!-- User Icon & Offcanvas Toggle (Right Side) -->
+                <div class="d-flex align-items-center">
+                    <!-- User Icon -->
+                    <a href="userLogin.html" class="me-3"><i class="bi bi-person-circle icon_color fs-4"></i></a>
+        
+                    <!-- Offcanvas Toggle Button (Visible on Mobile & Tablets) -->
+                    <button class="btn btn-outline-secondary d-md-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <i class="bi bi-list fs-3"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Offcanvas Navigation (Only for Mobile & Tablet Screens) -->
+        <div class="offcanvas offcanvas-end d-md-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="navbar-nav">
+                    <a class="nav-link nav_font" href="Home.html">Home</a>
+                    <a class="nav-link active nav_font fw-bold" href="about.html">About</a>
+                    <a class="nav-link nav_font" href="viewPlans.html">View Plans</a>
+                    <a class="nav-link nav_font" href="contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner -->
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="rounded-4 Banner"></div>
+    </div>
+
+    <!-- ABOUT US-->
+    <section>
+        <h1 class="text-center display-5 my-5 section_title">About Us</h1>
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-md-5">
+                    <img class="img-fluid" src="Assert/AboutImages/about_us.jpg" alt="About_Us">
+                </div>
+                <div class="col-md-6 ms-3 text-md-start text-sm-center">
+                  <p class="content">Welcome to MobiComm, your one-stop solution for fast, reliable, and secure prepaid mobile recharges. At MobiComm, we strive to provide an effortless recharge experience, empowering you to stay connected with ease. Whether you're recharging your mobile number, making payments via various methods, or accessing exclusive offers, we’ve got you covered.</p>
+                  <div class="d-flex align-items-center justify-content-center py-4">
+                    <button class="btn btn-primary">Explore More</button> 
+                  </div>
+                </div>
+            </div>
+        </div>
+     </section>
+    
+
+     <div class="blog-slider swiper">
+        <p class="text-center display-5 mb-5">Our <span class="Vision_heading">Goals</span></p>
+        <div class="blog-slider__wrp swiper-wrapper">
+            
+            <div class="blog-slider__item swiper-slide">
+                <div class="blog-slider__img">
+                    <img src="Assert/ConatactImages/customer_convinience.jpeg" alt="" style="width: 100%; height: 70%;">
+                </div>
+                <div class="blog-slider__content">
+                    <div class="blog-slider__title text-center">Customer Convenience</div>
+                    <div class="blog-slider__text d-flex align-items-center justify-content-center px-5">
+                        <p>Ensure a seamless and user-friendly recharge experience.</p>
+                    </div>
+                    <div class="blog-slider__hidden-text">
+                        <p>Easy and hassle-free for customers to purchase services, get support, or interact with a business. It focuses on saving customers time, reducing effort, and providing smooth, efficient experiences.</p>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <a href="#" class="blog-slider__button" onclick="toggleText(event)">READ MORE</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-slider__item swiper-slide">
+                <div class="blog-slider__img">
+                    <img src="Assert/ConatactImages/best_Value.png" alt="" style="width: 100%; height: 100%;">
+                </div>
+                <div class="blog-slider__content">
+                    <div class="blog-slider__title text-center">Provide Best Value</div>
+                    <div class="blog-slider__text d-flex align-items-center justify-content-center px-5">
+                        <p>Provide competitive pricing, discounts, and exclusive offers.</p>
+                    </div>
+                    <div class="blog-slider__hidden-text">
+                        <p>Offering customers the perfect balance of quality, price, convenience, and service — ensuring they feel they are getting more than what they paid for. It’s not just about being the cheapest but about giving the most worth for their money.</p>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <a href="#" class="blog-slider__button" onclick="toggleText(event)">READ MORE</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-slider__item swiper-slide">
+                <div class="blog-slider__img">
+                    <img src="Assert/ConatactImages/Reliable service.png" alt="">
+                </div>
+                <div class="blog-slider__content">
+                    <div class="blog-slider__title text-center">Provide Reliable Service </div>
+                    <div class="blog-slider__text d-flex align-items-center justify-content-center px-5">
+                        <p>Guarantee fast, error-free, and 24/7 recharge availability.</p>
+                    </div>
+                    <div class="blog-slider__hidden-text">
+                        <p>consistently delivering services that meet customer expectations in terms of quality, timeliness, and performance. Reliability builds trust, strengthens reputation, and encourages customer loyalty.</p>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <a href="#" class="blog-slider__button" onclick="toggleText(event)">READ MORE</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-slider__item swiper-slide">
+                <div class="blog-slider__img">
+                    <img src="Assert/ConatactImages/continuous_innovation.png" alt="">
+                </div>
+                <div class="blog-slider__content">
+                    <div class="blog-slider__title text-center">Continuous Innovation</div>
+                    <div class="blog-slider__text d-flex align-items-center justify-content-center px-5">
+                        <p>Enhance features and expand services to meet evolving user needs.</p>
+                    </div>
+                    <div class="blog-slider__hidden-text">
+                        <p> improving services, processes, or business strategies to stay competitive and meet changing customer needs. It’s about evolving with trends, technology, and customer expectations.</p>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <a href="#" class="blog-slider__button" onclick="toggleText(event)">READ MORE</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <footer class="bg-dark text-white mt-5 pt-5 pb-4">
+        <div class="container footer_fonts">
+            <div class="row text-center text-md-start">
+                <!-- Company Info -->
+                <div class="col-md-4 mb-4">
+                    <p class="text-uppercase fw-bold">Mobi-Comm</p>
+                    <p> Fast, secure online recharge for MobiComm SIM users. Enjoy seamless connectivity with instant top-ups anytime, anywhere.</p>
+                </div>
+    
+                <!-- Quick Navigation -->
+                <div class="col-md-3 mb-4 ps-md-5">
+                    <p class="fw-bold">Quick Navigation</p>
+                    <ul class="list-unstyled">
+                        <li><a class="text-white text-decoration-none" href="#">→ Home</a></li>
+                        <li><a class="text-white text-decoration-none" href="#">→ About</a></li>
+                        <li><a class="text-white text-decoration-none" href="#">→ View Plans</a></li>
+                        <li><a class="text-white text-decoration-none" href="#">→ Contact</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Social Media & Feedback -->
+                <div class="col-md-5">
+                    <p class="fw-bold">Follow Us On</p>
+                    <div class="d-flex justify-content-center justify-content-md-start">
+                        <i class="bi bi-facebook pe-3 fs-4"></i>
+                        <i class="bi bi-twitter-x pe-3 fs-4"></i>
+                        <i class="bi bi-linkedin pe-3 fs-4"></i>
+                        <i class="bi bi-instagram pe-3 fs-4"></i>
+                    </div>
+    
+                    <p class="mt-3 fw-bold">Your Suggestions Matters!</p>
+                    <p>Help us improve your experience. Share your thoughts below.</p>
+                    <form id="feedbackForm">
+                        <div class="mb-3">
+                            <textarea class="form-control" id="feedbackInput" placeholder="Share your feedback" rows="3"></textarea>
+                            <span class="error-feedback text-danger d-block mt-2"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-50 w-md-auto float-end submit_button">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Copyright Section -->
+            <div class="text-center mt-4">
+                <p class="mb-0">&copy; 2025 Mobi Comm. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <script>
+        var swiper = new Swiper('.blog-slider', {
+        spaceBetween: 30,
+        effect: 'slide', // Change from 'fade' to 'slide'
+        loop: true,
+        mousewheel: {
+            invert: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        }
+    });
+
+    function toggleText(event) {
+        event.preventDefault();
+        let button = event.target;
+        let hiddenText = button.closest('.blog-slider__content').querySelector('.blog-slider__hidden-text');
+        hiddenText.classList.toggle('show');
+        button.textContent = hiddenText.classList.contains('show') ? 'READ LESS' : 'READ MORE';
+    }
+    </script>
+</body>
+</html>

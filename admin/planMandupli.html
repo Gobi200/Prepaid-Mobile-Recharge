@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+     <!-- Google Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+     <!-- Google Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <!-- Sidebar-->
+    <div class="sidebar d-none d-md-block">
+      <h3 class="text-center pb-5">Admin Panel</h3>
+      <ul class="nav flex-column gap-3">
+      <li class="nav-item">
+          <a class="nav-link" href="admin.html"><i class="bi bi-window-plus pe-2"></i>Dashboard</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="user.html"><i class="bi bi-person-check pe-2"></i> Users</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="recharge.html"><i class="bi bi-telephone-fill pe-2"></i>Recharge</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link active" href="planManager.html"><i class="bi bi-folder-symlink-fill pe-2"></i>Plan Manager</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="report.html"><i class="bi bi-file-earmark-bar-graph-fill pe-2"></i>Report</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#"><i class="bi bi-arrow-bar-left pe-2"></i> Logout</a>
+      </li>
+      </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container-fluid">
+        <button class="btn btn-primary d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar">
+          ☰
+        </button>
+        <a class="navbar-brand" href="#">
+            <p class="logo"><span class="sub_logo">M</span>OBICOMM</p>
+        </a>
+        <div class="admin-icon">A</div>
+      </div>
+    </nav>
+
+    <!-- Dynamic Content -->
+    <div id="content" class="p-4">
+        <main>
+            <h2 class="text-center mb-4">Manage Plans</h2>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add Category</button>
+            </div>
+
+            <!-- Category Table -->
+            <table class="table table-bordered mt-4">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Category ID</th>
+                        <th>Category Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="categoryTableBody">
+                    <!-- Categories will be populated dynamically -->
+                </tbody>
+            </table>
+
+
+            <!-- Add Plan Button -->
+            <button class="btn btn-success my-3" data-bs-toggle="modal" data-bs-target="#addPlanModal">Add Plan</button>
+            <!-- Plan Table -->
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Plan ID</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Validity</th>
+                        <th>Calls</th>
+                        <th>Data</th>
+                        <th>Message</th>
+                        <th>Benefits</th>
+                        <th>Tag</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="planTableBody"></tbody>
+            </table>
+        </main>
+    </div>
+  </div>
+
+  <!-- Add Category Modal -->
+  <div class="modal fade" id="addCategoryModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label for="categoryName" class="form-label">Category Name:</label>
+                <input type="text" id="categoryName" class="form-control" placeholder="Enter Category Name">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveCategory">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Category Modal -->
+<div class="modal fade" id="editCategoryModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label for="editCategoryName" class="form-label">Category Name:</label>
+                <input type="text" id="editCategoryName" class="form-control" placeholder="Enter Category Name">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveEdit">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Category Modal -->
+<div class="modal fade" id="deleteCategoryModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label for="deletePassword" class="form-label">Enter Password:</label>
+                <input type="password" id="deletePassword" class="form-control" placeholder="Enter Password">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Plan Modal (Center) -->
+<div class="modal fade" id="addPlanModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add/Edit Plan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <label>Category:</label>
+                <select id="planCategory" class="form-select">
+                    <option>POPULAR PLAN</option>
+                    <option>TRUE 5G PLAN</option>
+                    <option>ANNUAL PLAN</option>
+                    <option>TOP UP</option>
+                    <option>VALUE PACK</option>
+                </select>
+
+                <label>Price:</label>
+                <input type="number" id="planPrice" class="form-control">
+
+                <label>Validity:</label>
+                <input type="text" id="planValidity" class="form-control">
+
+                <label>Calls:</label>
+                <select id="planCalls" class="form-select">
+                    <option>Unlimited</option>
+                    <option>Not Applicable</option>
+                </select>
+
+                <label>Data:</label>
+                <input type="text" id="planData" class="form-control">
+
+                <label>Message:</label>
+                <input type="text" id="planMessage" class="form-control">
+
+                <label>Additional Benefit:</label>
+                <input type="text" id="planBenefits" class="form-control">
+
+                <label>Tag:</label>
+                <input type="text" id="planTag" class="form-control">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary" id="savePlan">Save Plan</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Confirm Delete</h5>
+            </div>
+            <div class="modal-body">
+                <p>Enter Admin Password to Delete:</p>
+                <input type="password" id="deletePassword" class="form-control">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-danger" id="confirmDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!-- Off-canvas Sidebar for Mobile -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Admin Panel</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="admin.html">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="user.html">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="recharge.html">Recharge</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark active" href="planManager.html">Plan Manager</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="report.html">Report</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="#">Settings</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const apiUrl = "http://localhost:3000/planCategory";
+
+    const categoryTableBody = document.getElementById("categoryTableBody");
+    const categoryNameInput = document.getElementById("categoryName");
+    const saveCategoryButton = document.getElementById("saveCategory");
+    const editCategoryNameInput = document.getElementById("editCategoryName");
+    const saveEditButton = document.getElementById("saveEdit");
+    const deletePasswordInput = document.getElementById("deletePassword");
+    const confirmDeleteButton = document.getElementById("confirmDelete");
+
+    const addCategoryModal = new bootstrap.Modal(document.getElementById("addCategoryModal"));
+    const editCategoryModal = new bootstrap.Modal(document.getElementById("editCategoryModal"));
+    const deleteCategoryModal = new bootstrap.Modal(document.getElementById("deleteCategoryModal"));
+
+    let currentCategoryIdToEdit = null;
+    let currentCategoryIdToDelete = null;
+
+    // Load categories from db.json
+    function loadCategories() {
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                renderCategories(data);
+            })
+            .catch(error => console.error("Error loading categories:", error));
+    }
+
+    // Render categories in table
+    function renderCategories(categories) {
+        categoryTableBody.innerHTML = "";
+        categories.forEach(category => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${category.id}</td>
+                <td>${category.name}</td>
+                <td>
+                    <button class="btn btn-warning btn-sm edit-btn">Edit</button>
+                    <button class="btn btn-danger btn-sm delete-btn">Delete</button>
+                </td>
+            `;
+            row.querySelector(".edit-btn").addEventListener("click", () => {
+                currentCategoryIdToEdit = category.id;
+                editCategoryNameInput.value = category.name;
+                editCategoryModal.show();
+            });
+            row.querySelector(".delete-btn").addEventListener("click", () => {
+                currentCategoryIdToDelete = category.id;
+                deleteCategoryModal.show();
+            });
+            categoryTableBody.appendChild(row);
+        });
+    }
+
+    // Add new category
+    saveCategoryButton.addEventListener("click", function () {
+        const categoryName = categoryNameInput.value.trim();
+        if (!categoryName) {
+            alert("Please enter a category name.");
+            return;
+        }
+
+        const newCategory = { name: categoryName };
+
+        fetch(apiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newCategory)
+        })
+        .then(() => {
+            addCategoryModal.hide();
+            categoryNameInput.value = "";
+            loadCategories(); // Refresh table
+        })
+        .catch(error => console.error("Error adding category:", error));
+    });
+
+    // Save edited category
+    saveEditButton.addEventListener("click", function () {
+        const newCategoryName = editCategoryNameInput.value.trim();
+        if (!newCategoryName) {
+            alert("Please enter a category name.");
+            return;
+        }
+
+        fetch(`${apiUrl}/${currentCategoryIdToEdit}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name: newCategoryName })
+        })
+        .then(() => {
+            editCategoryModal.hide();
+            loadCategories();
+        })
+        .catch(error => console.error("Error updating category:", error));
+    });
+
+    // Delete category (with password check)
+    confirmDeleteButton.addEventListener("click", function () {
+        const password = deletePasswordInput.value;
+        const correctPassword = "123456";
+
+        if (password !== correctPassword) {
+            alert("Incorrect password!");
+            return;
+        }
+
+        fetch(`${apiUrl}/${currentCategoryIdToDelete}`, {
+            method: "DELETE"
+        })
+        .then(() => {
+            deleteCategoryModal.hide();
+            deletePasswordInput.value = "";
+            loadCategories();
+        })
+        .catch(error => console.error("Error deleting category:", error));
+    });
+
+    // Initial load
+    loadCategories();
+});
+
+  </script>
+  
+  <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+    const planTableBody = document.getElementById("planTableBody");
+    const savePlanButton = document.getElementById("savePlan");
+    const addPlanModal = new bootstrap.Modal(document.getElementById("addPlanModal"));
+
+    let plans = [];
+    let editPlanId = null;
+
+    // Fetch and display plans from the API
+    const loadPlans = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/plans");
+            plans = await response.json();
+            renderPlans();
+        } catch (error) {
+            console.error("Failed to fetch plans:", error);
+        }
+    };
+
+    // Render plan table rows
+    const renderPlans = () => {
+        planTableBody.innerHTML = plans.map(plan => `
+            <tr>
+                <td>${plan.id}</td>
+                <td>${plan.category}</td>
+                <td>${plan.price}</td>
+                <td>${plan.validity}</td>
+                <td>${plan.calls}</td>
+                <td>${plan.data}</td>
+                <td>${plan.message}</td>
+                <td>${plan.benefits}</td>
+                <td>${plan.tag}</td>
+                <td>
+                    <button class="btn btn-warning btn-sm" onclick="startEditPlan('${plan.id}')">Edit</button>
+                    <button class="btn btn-danger btn-sm" onclick="deletePlan('${plan.id}')">Delete</button>
+                </td>
+            </tr>
+        `).join("");
+    };
+
+    // Collect plan form data
+    const getPlanFormData = () => ({
+        category: document.getElementById("planCategory").value,
+        price: document.getElementById("planPrice").value,
+        validity: document.getElementById("planValidity").value,
+        calls: document.getElementById("planCalls").value,
+        data: document.getElementById("planData").value,
+        message: document.getElementById("planMessage").value,
+        benefits: document.getElementById("planBenefits").value,
+        tag: document.getElementById("planTag").value,
+    });
+
+    // Reset form
+    const resetPlanForm = () => {
+        document.getElementById("planCategory").value = "POPULAR PLAN";
+        document.getElementById("planPrice").value = "";
+        document.getElementById("planValidity").value = "";
+        document.getElementById("planCalls").value = "Unlimited";
+        document.getElementById("planData").value = "";
+        document.getElementById("planMessage").value = "";
+        document.getElementById("planBenefits").value = "";
+        document.getElementById("planTag").value = "";
+        editPlanId = null;
+    };
+
+    // Start adding a new plan
+    document.querySelector('[data-bs-target="#addPlanModal"]').addEventListener("click", () => {
+        resetPlanForm();
+        addPlanModal.show();
+    });
+
+    // Handle save button (Add or Edit)
+    savePlanButton.addEventListener("click", async () => {
+        const planData = getPlanFormData();
+
+        if (editPlanId) {
+            // Update existing plan
+            await fetch(`http://localhost:3000/plans/${editPlanId}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(planData)
+            });
+        } else {
+            // Create new plan
+            await fetch("http://localhost:3000/plans", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(planData)
+            });
+        }
+
+        addPlanModal.hide();
+        loadPlans();
+    });
+
+    // Start editing a plan
+    window.startEditPlan = (id) => {
+        const plan = plans.find(p => p.id == id);
+        if (plan) {
+            editPlanId = id;
+            document.getElementById("planCategory").value = plan.category;
+            document.getElementById("planPrice").value = plan.price;
+            document.getElementById("planValidity").value = plan.validity;
+            document.getElementById("planCalls").value = plan.calls;
+            document.getElementById("planData").value = plan.data;
+            document.getElementById("planMessage").value = plan.message;
+            document.getElementById("planBenefits").value = plan.benefits;
+            document.getElementById("planTag").value = plan.tag;
+            addPlanModal.show();
+        }
+    };
+
+    // Delete plan
+    window.deletePlan = async (id) => {
+        if (confirm("Are you sure you want to delete this plan?")) {
+            await fetch(`http://localhost:3000/plans/${id}`, { method: "DELETE" });
+            loadPlans();
+        }
+    };
+
+    // Initial load
+    loadPlans();
+});
+
+  </script>
+</body>
+</html>

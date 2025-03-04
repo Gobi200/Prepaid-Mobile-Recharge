@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payment Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- CUSTOME CSS -->
+     <link rel="stylesheet" type="text/css" href="payment.css">
+    <!-- Add Animate.css Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const params = new URLSearchParams(window.location.search);
+            const price = params.get('price');
+            const calls = params.get('calls');
+            const data = params.get('data');
+            const validity = params.get('validity');
+            const sms = params.get('sms');
+            const subscription = params.get('subscription');  // Get image URL
+            const benefit = params.get('benefit');
+
+            // Populate plan details on the page
+            document.getElementById('calls').textContent = calls;
+            document.getElementById('price').innerHTML = `<i class="bi bi-currency-rupee"></i>${price}`;
+            document.getElementById('data').textContent = data;
+            document.getElementById('validity').textContent = validity;
+            document.getElementById('sms').textContent = sms;
+            document.getElementById('benefit').textContent = benefit;
+            if (subscription) {
+                document.getElementById('subscriptionImage').src = subscription;
+                document.getElementById('subscriptionImage').style.display = 'block'; // Show image if exists
+            } else {
+                document.getElementById('subscriptionImage').style.display = 'none';  // Hide if no image passed
+            }
+        });
+
+        function showPaymentFields() {
+            var paymentMethod = document.getElementById("paymentMethod").value;
+            document.getElementById("cardDetails").style.display = paymentMethod === "Credit/Debit Card" ? "block" : "none";
+            document.getElementById("netBanking").style.display = paymentMethod === "Net Banking" ? "block" : "none";
+            document.getElementById("upi").style.display = paymentMethod === "UPI" ? "block" : "none";
+            document.getElementById("wallets").style.display = paymentMethod === "Wallets" ? "block" : "none";
+        }
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card shadow p-4">
+            <h2 class="text-center mb-3">PAYMENT</h2>
+            <div>
+                <h4 class="text-primary">Amount Payable: <span id="price"></span></h4>
+                <div class="p-3 mb-3">
+                    <p><span id="validity"></span> | <span id="data"></span></p>
+                    <p><strong><i class="bi bi-telephone-fill icon_color"></i></strong> <span id="calls"></span></p>
+                    <p><strong><i class="bi bi-chat-dots-fill icon_color"></i></strong> <span id="sms"></span></p>
+                    <p><strong>Benefit:</strong></p>
+                    <p class="pt-0"><li><span id="benefit"></span></li></p>
+                </div>
+            </div>
+            
+            <hr class="text-primary mt-0 p-0 border-3 fw-semibold">
+            <h5 class="mb-3">Please Select a Payment Method</h5>
+            <div class="mb-3">
+                <select class="form-select" id="paymentMethod" onchange="showPaymentFields()">
+                    <option>Credit/Debit Card</option>
+                    <option>Net Banking</option>
+                    <option>UPI</option>
+                    <option>Wallets</option>
+                </select>
+            </div>
+            
+            <form>
+                <div id="cardDetails">
+                    <div class="row mb-3">
+                        <label class="form-label fw-bold">We Accept:</label>
+                        <div  class="d-flex gap-3">
+                            <img src="Assert/paymentImages/master_card.jpg" alt="" style="width: 10%; height: 80%;">
+                            <img src="Assert/paymentImages/visa card.webp" alt="" style="width: 11%; height: 80%;">
+                            <img src="Assert/paymentImages/master_card.png" alt="" style="width: 10%; height: 80%;">
+                            <img src="Assert/paymentImages/rupay_card.png" alt="" style="width: 11%; height: 85%;">
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">First Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                <input type="text" class="form-control" placeholder="John">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Last Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                <input type="text" class="form-control" placeholder="Doe">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Card Number</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-credit-card"></i></span>
+                            <input type="text" class="form-control" placeholder="•••• •••• •••• ••••">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">CVV</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-credit-card-2-front-fill"></i></span>
+                                <input type="text" class="form-control" placeholder="•••">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Valid Until</label>
+                            <div class="d-flex gap-2">
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-calendar-check-fill"></i></span>
+                                    <select class="form-select">
+                                        <option>Month</option>
+                                        <option>01</option>
+                                        <option>02</option>
+                                        <option>03</option>
+                                        <option>04</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-calendar-check-fill"></i></span>
+                                    <select class="form-select">
+                                        <option>Year</option>
+                                        <option>2025</option>
+                                        <option>2026</option>
+                                        <option>2027</option>
+                                    </select>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="netBanking" style="display:none;">
+                    <label class="form-label">Select Bank</label>
+                    <select class="form-select">
+                        <option>Bank A</option>
+                        <option>Bank B</option>
+                        <option>Bank C</option>
+                    </select>
+                </div>
+                
+                <div id="upi" style="display:none;">
+                    <label class="form-label">UPI ID</label>
+                    <input type="text" class="form-control" placeholder="example@upi">
+                </div>
+                
+                <div id="wallets" style="display:none;">
+                    <label class="form-label">Select Wallet</label>
+                    <select class="form-select">
+                        <option>Paytm</option>
+                        <option>Google Pay</option>
+                        <option>PhonePe</option>
+                    </select>
+                </div>
+                
+                <div class="text-center mt-5 mb-3 d-flex justify-content-center gap-5">
+                    <button type="button" class="btn btn-danger w-25" onclick="goPlan()">Cancel</button>
+                    <!-- Change type to "button" to prevent form submission -->
+                    <button type="button" class="btn btn-success w-25" onclick="showPaymentSuccess()">Proceed</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Payment Success Modal -->
+    <div class="modal fade" id="paymentSuccessModal" tabindex="-1" aria-labelledby="paymentSuccessModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentSuccessModalLabel">Payment Status</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <!-- Loading Spinner -->
+                    <div id="loadingAnimation" class="hidden">
+                        <div class="spinner"></div>
+                    </div>
+                    <!-- Success Message with Image -->
+                    <div id="successMessage" class="hidden animate__animated animate__bounce">
+                        <img src="Assert/paymentImages/payment_success.png" alt="Success" class="success-image">
+                        <p class="fw-bold">Payment Successful!</p>
+                        <!-- Plan Details -->
+                        <div class="plan-details">
+                            <p><strong>Plan Details:</strong></p>
+                            <p>Price: <span id="modalPrice"></span></p>
+                            <p>Validity: <span id="modalValidity"></span></p>
+                            <p>Data: <span id="modalData"></span></p>
+                            <p>Calls: <span id="modalCalls"></span></p>
+                            <p>SMS: <span id="modalSms"></span></p>
+                            <p>Benefit: <span id="modalBenefit"></span></p>
+                        </div>
+                    </div>
+                    <!-- Confetti Canvas (inside the modal) -->
+                    <canvas id="confettiCanvas"></canvas>
+                    <div class="modal-footer d-flex align-items-center justify-content-center gap-4">
+                        <button class="btn back_button" data-bs-dismiss="modal" onclick="goHome()"><i class="bi bi-arrow-bar-left"></i>Go Home</button>
+                        <button class="btn download_button" onclick="downloadPlanDetails()">Download <i class="bi bi-download"></i> </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Canvas for confetti -->
+    <canvas id="confettiCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></canvas>
+
+    <!-- Confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showPaymentSuccess() {
+            // Show the modal
+            var myModal = new bootstrap.Modal(document.getElementById('paymentSuccessModal'), {
+                keyboard: false
+            });
+            myModal.show();
+
+            // Show the loading spinner
+            document.getElementById('loadingAnimation').classList.remove('hidden');
+            document.getElementById('successMessage').classList.add('hidden');
+
+            // Simulate a 2-second delay for the payment process
+            setTimeout(function() {
+                // Hide the loading spinner
+                document.getElementById('loadingAnimation').classList.add('hidden');
+
+                // Show the success message with a bounce animation
+                document.getElementById('successMessage').classList.remove('hidden');
+
+                // Populate plan details in the modal
+                const params = new URLSearchParams(window.location.search);
+                document.getElementById('modalPrice').textContent = params.get('price');
+                document.getElementById('modalValidity').textContent = params.get('validity');
+                document.getElementById('modalData').textContent = params.get('data');
+                document.getElementById('modalCalls').textContent = params.get('calls');
+                document.getElementById('modalSms').textContent = params.get('sms');
+                document.getElementById('modalBenefit').textContent = params.get('benefit');
+
+                // Trigger confetti poppers
+                confetti({
+                    particleCount: 100, // Number of confetti particles
+                    spread: 70, // Spread of the confetti
+                    origin: { y: 0.6 } // Origin of the confetti (bottom of the screen)
+                });
+            }, 2000); // 2000 milliseconds = 2 seconds
+        }
+
+
+        function goHome() {
+            window.location.href = 'Home.html'; // Change 'index.html' to your actual home page URL.
+        }
+
+        function goPlan() {
+            window.location.href = 'viewPlans.html'; 
+        }
+
+        function downloadPlanDetails() {
+            const params = new URLSearchParams(window.location.search);
+
+            const planDetails = `
+                Plan Details:
+
+                Price: ₹${params.get('price')}
+                Validity: ${params.get('validity')}
+                Data: ${params.get('data')}
+                Calls: ${params.get('calls')}
+                SMS: ${params.get('sms')}
+                Benefit: ${params.get('benefit')}
+            `;
+
+            const blob = new Blob([planDetails], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
+
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Plan_Details.doc'; // Downloaded file name
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>

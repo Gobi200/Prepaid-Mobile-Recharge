@@ -1,0 +1,110 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+.profile_icon{
+    color: #023E8A;
+}
+.card_heading {
+    font-size: xx-large;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
+}
+.current_plan {
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.progress-percent {
+    font-size: medium;
+    font-weight: bold;
+}
+
+.expiry_text {
+    color: white;
+}
+
+/* Linear Progress Bar */
+.progress {
+    height: 20px;
+    border-radius: 20px;
+    background-color: #e0e0e0;
+}
+
+.progress-done {
+    background-color: #0077B6;
+    border-radius: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 0;
+    opacity: 0;
+    transition: width 1.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* Circular Progress */
+.progress-container {
+    position: relative;
+    display: inline-block;
+}
+
+.progress-circle {
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: relative;
+}
+
+/* Circle SVG Styling */
+.progress-ring {
+    transition: stroke-dashoffset 1.5s ease-in-out;
+    animation: progress-animation 1.5s forwards;
+    stroke: #0077B6;
+}
+
+/* Centered Text Inside Circle */
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+.Data_add_on_button{
+    background-color: #023E8A;
+    color: #fff;
+    padding: 1px;
+    border: none;
+    letter-spacing: 1px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.Data_add_on_button:hover{
+    color: #fff;
+}
+.recharge_button{
+    background-color: #023E8A;
+    color: #fff;
+    padding: 2px;
+}
+.recharge_button:hover{
+    color: #fff;
+}
+th{
+    background-color: #023E8A !important;
+    color: #fff !important;
+}
+.status-success {
+    color: green !important;
+    font-weight: bold;
+}
+.status-failed {
+    color: red !important;
+    font-weight: bold;
+}
