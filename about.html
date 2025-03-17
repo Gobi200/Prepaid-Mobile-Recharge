@@ -17,7 +17,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap" rel="stylesheet">
     <style>
         .blog-slider {
             width: 95%;
@@ -44,11 +47,13 @@
 <body>
     <!-- NAVIGATION BAR -->
     <div class="header">
-        <nav class="navbar navbar-expand-md bg-body-tertiary fixed-top">
+        <nav class="navbar navbar-expand-md fixed-top custom-navbar">
             <div class="container-fluid">
                 <!-- Navbar Brand (Left) -->
-                <a class="navbar-brand logo" href="Home.html"><span class="logo_first_letter">M</span><span class="sub_logo">obiComm</span></a>
-        
+                <a class="navbar-brand logo" href="Home.html">
+                    <span class="logo_first_letter">M</span><span class="sub_logo">obiComm</span>
+                </a>
+    
                 <!-- Navbar Links (Visible on Medium and Larger Screens) -->
                 <div class="d-none d-md-flex justify-content-center flex-grow-1">
                     <div class="navbar-nav">
@@ -58,22 +63,24 @@
                         <a class="nav-link nav_font" href="contact.html">Contact</a>
                     </div>
                 </div>
-        
+    
                 <!-- User Icon & Offcanvas Toggle (Right Side) -->
                 <div class="d-flex align-items-center">
                     <!-- User Icon -->
-                    <a href="userLogin.html" class="me-3"><i class="bi bi-person-circle icon_color fs-4"></i></a>
-        
+                    <a href="userLogin.html" class="me-3"><i class="bi bi-person-circle header_icon_color fs-4"></i></a>
+    
                     <!-- Offcanvas Toggle Button (Visible on Mobile & Tablets) -->
-                    <button class="btn btn-outline-secondary d-md-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <button class="btn btn-outline-secondary d-md-none border-0" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                         <i class="bi bi-list fs-3"></i>
                     </button>
                 </div>
             </div>
         </nav>
-        
+    
         <!-- Offcanvas Navigation (Only for Mobile & Tablet Screens) -->
-        <div class="offcanvas offcanvas-end d-md-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas offcanvas-end d-md-none custom-offcanvas" tabindex="-1" id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>

@@ -17,11 +17,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="style.css">
     <!-- Carousel effects  -->
@@ -272,94 +268,89 @@
                 margin-right: 0;
             }
         }
+        
    </style>  
 </head>
 <body>
 
     <!-- NAVIGATION BAR -->
-     <div class="header">
-         <nav class="navbar navbar-expand-md bg-body-tertiary fixed-top">
-             <div class="container-fluid">
-                 <!-- Navbar Brand (Left) -->
-                 <a class="navbar-brand logo" href="Home.html"><span class="logo_first_letter">M</span><span class="sub_logo">obiComm</span></a>
-         
-                 <!-- Navbar Links (Visible on Medium and Larger Screens) -->
-                 <div class="d-none d-md-flex justify-content-center flex-grow-1">
-                     <div class="navbar-nav">
-                         <a class="nav-link active nav_font fw-bold" href="Home.html">Home</a>
-                         <a class="nav-link nav_font" href="about.html">About</a>
-                         <a class="nav-link nav_font" href="viewPlans.html">View Plans</a>
-                         <a class="nav-link nav_font" href="contact.html">Contact</a>
-                     </div>
-                 </div>
-         
-                 <!-- User Icon & Offcanvas Toggle (Right Side) -->
-                 <div class="d-flex align-items-center">
-                     <!-- User Icon -->
-                     <a href="userLogin.html" class="me-3"><i class="bi bi-person-circle header_icon_color fs-4"></i></a>
-         
-                     <!-- Offcanvas Toggle Button (Visible on Mobile & Tablets) -->
-                     <button class="btn btn-outline-secondary d-md-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                         <i class="bi bi-list fs-3"></i>
-                     </button>
-                 </div>
-             </div>
-         </nav>
-         
-         <!-- Offcanvas Navigation (Only for Mobile & Tablet Screens) -->
-         <div class="offcanvas offcanvas-end d-md-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-             <div class="offcanvas-header">
-                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-             </div>
-             <div class="offcanvas-body">
-                 <div class="navbar-nav">
-                     <a class="nav-link active nav_font active fw-bold" href="Home.html">Home</a>
-                     <a class="nav-link nav_font" href="about.html">About</a>
-                     <a class="nav-link nav_font" href="viewPlans.html">View Plans</a>
-                     <a class="nav-link nav_font" href="contact.html">Contact</a>
-                 </div>
-             </div>
-         </div>
-     </div>
+<div class="header">
+    <nav class="navbar navbar-expand-md fixed-top custom-navbar">
+        <div class="container-fluid">
+            <!-- Navbar Brand (Left) -->
+            <a class="navbar-brand logo" href="Home.html">
+                <span class="logo_first_letter">M</span><span class="sub_logo">obiComm</span>
+            </a>
+
+            <!-- Navbar Links (Visible on Medium and Larger Screens) -->
+            <div class="d-none d-md-flex justify-content-center flex-grow-1">
+                <div class="navbar-nav">
+                    <a class="nav-link active nav_font fw-bold" href="Home.html">Home</a>
+                    <a class="nav-link nav_font" href="about.html">About</a>
+                    <a class="nav-link nav_font" href="viewPlans.html">View Plans</a>
+                    <a class="nav-link nav_font" href="contact.html">Contact</a>
+                </div>
+            </div>
+
+            <!-- User Icon & Offcanvas Toggle (Right Side) -->
+            <div class="d-flex align-items-center">
+                <!-- User Icon -->
+                <a href="userLogin.html" class="me-3"><i class="bi bi-person-circle header_icon_color fs-4"></i></a>
+
+                <!-- Offcanvas Toggle Button (Visible on Mobile & Tablets) -->
+                <button class="btn btn-outline-secondary d-md-none border-0" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <i class="bi bi-list fs-3"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Offcanvas Navigation (Only for Mobile & Tablet Screens) -->
+    <div class="offcanvas offcanvas-end d-md-none custom-offcanvas" tabindex="-1" id="offcanvasNavbar"
+        aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="navbar-nav">
+                <a class="nav-link active nav_font fw-bold" href="Home.html">Home</a>
+                <a class="nav-link nav_font" href="about.html">About</a>
+                <a class="nav-link nav_font" href="viewPlans.html">View Plans</a>
+                <a class="nav-link nav_font" href="contact.html">Contact</a>
+            </div>
+        </div>
+    </div>
+</div>
     
 
     <!-- BANNER -->
-    <div class="d-flex align-items-center justify-content-center">
-        <div class="Banner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="text-center py-5 px-5 banner_heading">
-                            <h1>Welcome To <span class="Banner_logo"> MobiComm </span>Services</h1>
-                            <p class="pt-5 Banner_slogan">"One Tap Recharge, Savings Galore – Power up Your Conversations Now !"</p>
-                        </div>
-                        <div class="d-flex justify-content-evenly py-3 banner_data">
-                            <div class="text-center">
-                                <p class="mb-0 banner_value">1 Lakh+</p>
-                                <p class="mb-0 fw-bold">Trusted Customers</p>
-                            </div>
-                            <div class="verticle_line"></div>
-                            <div class="text-center">
-                                <p class="mb-0 banner_value">100+</p>
-                                <p class="mb-0 fw-bold">Dedicated Centers</p>
-                            </div>
-                            <div class="verticle_line"></div>
-                            <div class="text-center">
-                                <p class="mb-0 banner_value">24/7</p>
-                                <p class="mb-0 fw-bold">Customer Support</p>
-                            </div>
-                        </div>
+    <div class="container shadow">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center align-items-center position-relative">
+                <img src="Assert/homeImages/Banner_Image.jpg" alt="Banner_Image"
+                    style="width: 100%; height: 80vh; border-radius: 50px; opacity: 0.9;">
+                 <!-- Text Overlay -->
+                <div class="position-absolute text-overlay text-center">
+                    <div class="logo-text">
+                        <span class="main_logo">M</span><span style="font-family: Agbalumo, system-ui; letter-spacing: 2px;">obicomm</span>
+                    </div>
+                    <div class="sub-text pt-4">
+                        <span id="changingText" class="fade-text text-warning">QUICK</span> RECHARGE
+                        <p class="slogan pt-3">Fast, Secure, and Hassle-Free Recharge – Stay Connected Anytime, Anywhere!</p>
+                        <p class="pt-5">"Join Over 1 Million+ Satisfied Users Who Trust Us for Fast, Secure, and Hassle-Free Mobile Recharges!"</p>
                     </div>
                 </div>
             </div>
-            <p class="line-1 anim-typewriter text-start"></p>
         </div>
     </div>
-    <div class="d-flex align-items-center justify-content-center">
-        <img src="Assert/wave.svg" alt="Banner_Image" style="width: 90%;">
-    </div>
-      
+
+    <button class="instant-recharge-btn">
+        <i class="bi bi-lightning-fill"></i>
+        <span class="btn-text">Instant Recharge</span>
+    </button>
+
     <!-- RECHARGE SECTION-->
     <section class="container my-5">
         <div class="row d-flex g-lg-5 g-md-4 g-sm-3 mx-5">
@@ -730,23 +721,49 @@
 
     <!-- Bootstrap Javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    
     <!-- Mobile Number validation for recharge-->
     <script>
-       document.getElementById("rechargeButton").addEventListener("click", function(event) {
-            let mobileInput = document.getElementById("mobileNumber");
-            let errorText = document.querySelector(".error-text");
-            let mobileNumber = mobileInput.value.trim();
-            let mobileRegex = /^[6-9]\d{9}$/; // 10-digit number starting with 6-9
+       document.getElementById("rechargeButton").addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent form submission
 
-            if (!mobileRegex.test(mobileNumber)) {
-                errorText.textContent = "Enter a valid 10-digit mobile number.";
-                mobileInput.classList.add("is-invalid");
-                event.preventDefault(); // Prevents form submission if invalid
-            } else {
-                errorText.textContent = "";
-                mobileInput.classList.remove("is-invalid");
+    let mobileInput = document.getElementById("mobileNumber");
+    let mobileNumber = mobileInput.value.trim();
+    let errorText = document.querySelector(".error-text");
+
+    // Clear previous error message
+    errorText.textContent = "";
+
+    // Validate if the mobile number is exactly 10 digits
+    if (!/^\d{10}$/.test(mobileNumber)) {
+        errorText.textContent = "Enter a valid 10 digit mobile number";
+        return;
+    }
+
+    // Check the mobile number in the database using Fetch API
+    fetch(`http://localhost:8091/users/check-mobile?mobile=${mobileNumber}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
             }
+            return response.json();
+        })
+        .then(exists => {
+            if (exists) {
+                // Redirect to viewPlans.html if mobile number exists
+                window.location.href = "viewPlans.html";
+            } else {
+                errorText.textContent = "Please Enter a Valid Prepaid Mobicomm Number";
+            }
+        })
+        .catch(error => {
+            console.error("Error checking mobile number:", error);
+            errorText.textContent = "Error checking number. Try again later.";
         });
+});
+
+
     </script>
 
     <!-- Email Validation for newsletter -->
@@ -814,6 +831,27 @@
                 }
             });
         });
+    </script>
+    
+    <script>
+         const words = ["QUICK","SECURE","RAPID","SMART","HAPPY"];
+        let index = 0;
+        const textElement = document.getElementById("changingText");
+
+        function changeText() {
+            textElement.style.opacity = "0"; // Fade out
+            textElement.style.transform = "translateY(-10px)";
+
+            setTimeout(() => {
+                index = (index + 1) % words.length; // Cycle through words
+                textElement.innerText = words[index];
+
+                textElement.style.opacity = "1"; // Fade in
+                textElement.style.transform = "translateY(0)";
+            }, 500); // Wait for fade-out to complete before updating text
+        }
+
+        setInterval(changeText, 2000); // Change text every 1.5 sec
     </script>
     </body>
 </html>

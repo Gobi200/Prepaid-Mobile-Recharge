@@ -18,29 +18,26 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const params = new URLSearchParams(window.location.search);
-            const price = params.get('price');
-            const calls = params.get('calls');
-            const data = params.get('data');
-            const validity = params.get('validity');
-            const sms = params.get('sms');
-            const subscription = params.get('subscription');  // Get image URL
-            const benefit = params.get('benefit');
+    const params = new URLSearchParams(window.location.search);
+    
+    document.getElementById('price').innerHTML = `<i class="bi bi-currency-rupee"></i>${params.get('price')}`;
+    document.getElementById('validity').textContent = params.get('validity');
+    document.getElementById('data').textContent = params.get('data');
+    document.getElementById('calls').textContent = params.get('voice');
+    document.getElementById('sms').textContent = params.get('message');
+    document.getElementById('benefit').textContent = params.get('description');
 
-            // Populate plan details on the page
-            document.getElementById('calls').textContent = calls;
-            document.getElementById('price').innerHTML = `<i class="bi bi-currency-rupee"></i>${price}`;
-            document.getElementById('data').textContent = data;
-            document.getElementById('validity').textContent = validity;
-            document.getElementById('sms').textContent = sms;
-            document.getElementById('benefit').textContent = benefit;
-            if (subscription) {
-                document.getElementById('subscriptionImage').src = subscription;
-                document.getElementById('subscriptionImage').style.display = 'block'; // Show image if exists
-            } else {
-                document.getElementById('subscriptionImage').style.display = 'none';  // Hide if no image passed
-            }
-        });
+    const subscription = params.get('subscriptions');
+    const subscriptionImage = document.getElementById('subscriptionImage');
+
+    if (subscription && subscription.startsWith("http")) {
+        subscriptionImage.src = decodeURIComponent(subscription);
+        subscriptionImage.style.display = 'block';
+    } else {
+        subscriptionImage.style.display = 'none';
+    }
+});
+
 
         function showPaymentFields() {
             var paymentMethod = document.getElementById("paymentMethod").value;
@@ -61,6 +58,10 @@
                     <p><span id="validity"></span> | <span id="data"></span></p>
                     <p><strong><i class="bi bi-telephone-fill icon_color"></i></strong> <span id="calls"></span></p>
                     <p><strong><i class="bi bi-chat-dots-fill icon_color"></i></strong> <span id="sms"></span></p>
+                  
+                    <div class="text-center">
+                        <img id="subscriptionImage" src="" alt="Subscription Benefit" class="img-fluid mb-3" style="display: none; max-width: 150px;">
+                    </div>
                     <p><strong>Benefit:</strong></p>
                     <p class="pt-0"><li><span id="benefit"></span></li></p>
                 </div>
@@ -196,13 +197,13 @@
                         <p class="fw-bold">Payment Successful!</p>
                         <!-- Plan Details -->
                         <div class="plan-details">
-                            <p><strong>Plan Details:</strong></p>
-                            <p>Price: <span id="modalPrice"></span></p>
-                            <p>Validity: <span id="modalValidity"></span></p>
-                            <p>Data: <span id="modalData"></span></p>
-                            <p>Calls: <span id="modalCalls"></span></p>
-                            <p>SMS: <span id="modalSms"></span></p>
-                            <p>Benefit: <span id="modalBenefit"></span></p>
+                            <p class="text-center fs-5"><strong>Plan Details:</strong></p>
+                            <p>Price: <i class="bi bi-currency-rupee"></i><span id="modalPrice" class="fst-italic"></span></p>
+                            <p>Validity: <span id="modalValidity" class="fst-italic"></span></p>
+                            <p>Data: <span id="modalData" class="fst-italic"></span></p>
+                            <p>Calls: <span id="modalCalls" class="fst-italic"></span></p>
+                            <p>SMS: <span id="modalSms" class="fst-italic"></span></p>
+                            <p>Benefit: <span id="modalBenefit" class="fst-italic"></span></p>
                         </div>
                     </div>
                     <!-- Confetti Canvas (inside the modal) -->
@@ -247,9 +248,9 @@
                 document.getElementById('modalPrice').textContent = params.get('price');
                 document.getElementById('modalValidity').textContent = params.get('validity');
                 document.getElementById('modalData').textContent = params.get('data');
-                document.getElementById('modalCalls').textContent = params.get('calls');
-                document.getElementById('modalSms').textContent = params.get('sms');
-                document.getElementById('modalBenefit').textContent = params.get('benefit');
+                document.getElementById('modalCalls').textContent = params.get('voice');
+                document.getElementById('modalSms').textContent = params.get('message');
+                document.getElementById('modalBenefit').textContent = params.get('description');
 
                 // Trigger confetti poppers
                 confetti({
@@ -278,9 +279,9 @@
                 Price: ₹${params.get('price')}
                 Validity: ${params.get('validity')}
                 Data: ${params.get('data')}
-                Calls: ${params.get('calls')}
-                SMS: ${params.get('sms')}
-                Benefit: ${params.get('benefit')}
+                Calls: ${params.get('voice')}
+                SMS: ${params.get('message')}
+                Benefit: ${params.get('description')}
             `;
 
             const blob = new Blob([planDetails], { type: 'application/msword' });

@@ -7,36 +7,228 @@ body{
 .header_icon_color{
     color: #023E8A;
 }
-.logo{
+
+/* Custom Navbar Styling */
+.custom-navbar {
+    background: rgba(255, 255, 255, 0.2); /* Glassmorphism effect */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease-in-out;
+    padding: 3px 0;
+}
+
+/* Navbar Brand */
+.logo {
+    margin-left: 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
     color: #023E8A;
+    font-family: Agbalumo, system-ui;
+}
+
+.logo_first_letter {
+    /* background: #0052cc; */
+    color: #0052cc;
+    /* padding: 5px 10px; */
+    font-size: 2rem;
+    border-radius: 5px;
+    /* margin-right: 5px; */
+    font-weight: 700;
+    /* transform: skew(-15deg); */
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* Navbar Links */
+.nav-link {
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.nav-link::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 3px;
+    background: #0052cc;
+    transition: width 0.3s ease-in-out;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #0052cc;
     font-weight: bold;
 }
-.logo_first_letter{
-    font-family: 'Courier New', Courier, monospace;
-    font-size: xx-large;
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
 }
-.sub_logo{
-    font-size: medium;
+
+/* User Icon */
+.header_icon_color {
+    color: #0052cc;
+    transition: transform 0.3s ease-in-out;
 }
+
+.header_icon_color:hover {
+    transform: scale(1.2);
+}
+
+/* Offcanvas Menu */
+.custom-offcanvas {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .custom-navbar {
+        background: rgba(255, 255, 255, 0.9);
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+        text-align: center;
+        display: block;
+        padding: 12px;
+    }
+}
+
 .Banner {
-    height: 50vh; 
+    height: 70vh; 
     width: 90%;
-    /* background-color: #0096C7; */
     background-color: #023E8A;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
+    border-radius: 20px;
     font-size: larger;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.banner_heading{
+
+.text-overlay {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    width: 80%;
+}
+
+.logo-text {
+    font-size: 3rem;
+    font-weight: 700;
+    font-style: italic;
+    color: #023E8A;
+    display: inline-block;
+    animation: growOnly 1.5s ease-in-out forwards; 
+    /* infinite alternate */
+    /* forwards */
+}
+
+.logo-text .main_logo {
+    display: inline-block;
+    background: #023E8A;
     color: white;
+    padding: 5px 10px;
+    font-size: 3.5rem;
+    border-radius: 5px;
+    margin-right: 5px;
+    font-weight: 700;
+    transform: skew(-18deg);
 }
-.banner_slogan{
-    font-family: Arial, Helvetica, sans-serif;
+.sub-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0077B6;
 }
+
+@keyframes growOnly {
+    0% { transform: scale(0.5); }
+    100% { transform: scale(1.3); }
+}
+
+.fade-text {
+    display: inline-block;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    width: 100px; /* Set a fixed width */
+    text-align: center; /* Center align text */
+    display: inline-block;
+    font-style: italic;
+}
+
+@keyframes fadeEffect {
+    0% { opacity: 1; transform: translateY(0); }
+    40% { opacity: 0; transform: translateY(-10px); }
+    60% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+.slogan{
+    color: gray;
+    font-weight: normal;
+    font-size: medium;
+    font-style: italic;
+}
+
 .title{
     letter-spacing: 2px;
     color: #023E8A;
     font-size: 25px;
+}
+
+.instant-recharge-btn {
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+    background-color: #0052cc;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: width 0.3s ease-in-out, padding 0.3s ease-in-out;
+    width: 50px; /* Initially small */
+    overflow: hidden;
+    white-space: nowrap;
+    z-index: 9999; 
+}
+
+.instant-recharge-btn i {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.btn-text {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    display: inline-block;
+}
+
+/* Expand the button on hover */
+.instant-recharge-btn:hover {
+    width: 200px;
+    padding: 10px 20px;
+}
+
+.instant-recharge-btn:hover .btn-text {
+    opacity: 1;
 }
 
 .Mobile_recharge{

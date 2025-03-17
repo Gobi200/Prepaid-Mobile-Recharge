@@ -18,6 +18,37 @@
      <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="admin.css">
+    <style>
+        .category_table{
+            background-color: #023E8A;
+            color: white;
+        }
+        .plan_table{
+            background-color: #023E8A;
+            color: white;
+        }
+        .nav_plan{
+            color: grey;
+        }
+        body{
+            font-family: "Poppins", serif;
+        }
+
+    .custom-checkbox .form-check-input {
+        background-color: #EDEADE; /* Bootstrap Primary Blue */
+        border: 2px solid #0056b3;
+    }
+
+    .custom-checkbox .form-check-input:checked {
+        background-color: #0056b3; /* Darker Blue */
+    }
+
+    .custom-checkbox .form-check-label {
+        font-weight: bold;
+        margin-left: 5px;
+    }
+
+    </style>
 </head>
 <body>
   <!-- Sidebar-->
@@ -64,48 +95,115 @@
     <div id="content" class="p-4">
         <main>
             <h2 class="text-center mb-4">Manage Plans</h2>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add Category</button>
+            <div class="d-flex justify-content-end align-items-end mb-2">
+                <button class="btn btn-primary fw-bold" data-bs-toggle="modal" data-bs-target="#addCategoryModal"><i class="bi bi-plus-lg pe-1"></i>Add Category</button>
             </div>
 
             <!-- Category Table -->
-            <table class="table table-bordered mt-4">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Category ID</th>
-                        <th>Category Name</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="categoryTableBody">
-                    <!-- Categories will be populated dynamically -->
-                </tbody>
-            </table>
+             <div class="table-responsive">
+                 <table class="table table-bordered mt-4">
+                     <thead class="category_table">
+                         <tr class="text-center">
+                             <th>Category ID</th>
+                             <th>Category Name</th>
+                             <th>Status</th>
+                             <th>Actions</th>
+                         </tr>
+                     </thead>
+                     <tbody id="categoryTableBody">
+                         <!-- Categories will be populated dynamically -->
+                     </tbody>
+                 </table>
+             </div>
 
 
-            <!-- Add Plan Button -->
-            <button class="btn btn-success my-3" data-bs-toggle="modal" data-bs-target="#addPlanModal">Add Plan</button>
-            <!-- Plan Table -->
-            <table class="table table-bordered">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Plan ID</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                        <th>Validity</th>
-                        <th>Calls</th>
-                        <th>Data</th>
-                        <th>Message</th>
-                        <th>Benefits</th>
-                        <th>Tag</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="planTableBody"></tbody>
-            </table>
-        </main>
-    </div>
-  </div>
+        <!-- Plan Filter Dropdown -->
+        <div class="dropdown ms-3 my-4">
+            <button class="btn w-25 d-flex justify-content-between align-items-center text-start ps-3 shadow border-1" 
+                type="button" id="planFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <span id="selectedCategory">Filter Plans</span> 
+                <span class="ms-auto"><i class="bi bi-chevron-down"></i></span>
+            </button>
+            <ul class="dropdown-menu" id="categoryFilter">
+                <li><a class="dropdown-item" href="#" data-filter="all">All Plans</a></li>
+            </ul>
+        </div>
+
+        <!-- Plan Management Tabs with Dropdown -->
+        <div class="d-flex align-items-center justify-content-between">
+                <!-- Nav Tabs -->
+                <ul class="nav nav-tabs" id="planTabs">
+                    <li class="nav-item">
+                        <a class="nav-link nav_plan  active" id="active-plans-tab" data-bs-toggle="tab" href="#activePlans">Active Plans</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav_plan" id="inactive-plans-tab" data-bs-toggle="tab" href="#inactivePlans">Inactive Plans</a>
+                    </li>
+                </ul>
+
+                <!-- Plan Management Tabs -->
+                <button class="btn btn-success fw-bold" data-bs-toggle="modal" data-bs-target="#addPlanModal"><i class="bi bi-plus-lg pe-1"></i> Add Plan</button>
+        </div>
+
+
+                <!-- Tab Content -->
+                <div class="tab-content mt-3">
+                    <!-- Active Plans -->
+                    <div class="tab-pane fade show active" id="activePlans">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="plan_table">
+                                    <tr class="text-center">
+                                        <th>Plan ID</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th>Validity</th>
+                                        <th>Calls</th>
+                                        <th>Data</th>
+                                        <th>Message</th>
+                                        <th>Benefits</th>
+                                        <th>Subscription</th>
+                                        <th>Tag</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="activePlanTableBody">
+                                    <!-- Active plans will be populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Inactive Plans -->
+                    <div class="tab-pane fade" id="inactivePlans">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="plan_table">
+                                    <tr class="text-center">
+                                        <th>Plan ID</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th>Validity</th>
+                                        <th>Calls</th>
+                                        <th>Data</th>
+                                        <th>Message</th>
+                                        <th>Benefits</th>
+                                        <th>Subscription</th>
+                                        <th>Tag</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="inactivePlanTableBody">
+                                    <!-- Inactive plans will be populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                </main>
+            </div>
+        </div>
 
   <!-- Add Category Modal -->
   <div class="modal fade" id="addCategoryModal" tabindex="-1" aria-hidden="true">
@@ -147,26 +245,6 @@
     </div>
 </div>
 
-<!-- Delete Category Modal -->
-<div class="modal fade" id="deleteCategoryModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Delete Category</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <label for="deletePassword" class="form-label">Enter Password:</label>
-                <input type="password" id="deletePassword" class="form-control" placeholder="Enter Password">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Add Plan Modal (Center) -->
 <div class="modal fade" id="addPlanModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -176,39 +254,66 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <label>Category:</label>
-                <select id="planCategory" class="form-select">
-                    <option>POPULAR PLAN</option>
-                    <option>TRUE 5G PLAN</option>
-                    <option>ANNUAL PLAN</option>
-                    <option>TOP UP</option>
-                    <option>VALUE PACK</option>
-                </select>
+                <div class="row">
+                    <!-- Left Column (6 Grid) -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="categoryDropdown" class="form-label">Category:</label>
+                            <select id="categoryDropdown" class="form-select w-100"></select>
+                        </div>
 
-                <label>Price:</label>
-                <input type="number" id="planPrice" class="form-control">
+                        <div class="mb-3">
+                            <label for="planPrice" class="form-label">Price:</label>
+                            <input type="number" id="planPrice" class="form-control w-100">
+                        </div>
 
-                <label>Validity:</label>
-                <input type="text" id="planValidity" class="form-control">
+                        <div class="mb-3">
+                            <label for="planValidity" class="form-label">Validity:</label>
+                            <input type="text" id="planValidity" class="form-control w-100">
+                        </div>
 
-                <label>Calls:</label>
-                <select id="planCalls" class="form-select">
-                    <option>Unlimited</option>
-                    <option>Not Applicable</option>
-                </select>
+                        <div class="mb-3">
+                            <label for="planCalls" class="form-label">Calls:</label>
+                            <select id="planCalls" class="form-select w-100">
+                                <option>Unlimited Calls</option>
+                                <option>Not Applicable</option>
+                            </select>
+                        </div>
 
-                <label>Data:</label>
-                <input type="text" id="planData" class="form-control">
+                        <div class="mb-3">
+                            <label for="planTag" class="form-label">Tag:</label>
+                            <input type="text" id="planTag" class="form-control w-100">
+                        </div>
+                    </div>
 
-                <label>Message:</label>
-                <input type="text" id="planMessage" class="form-control">
+                    <!-- Right Column (6 Grid) -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="planData" class="form-label">Data:</label>
+                            <input type="text" id="planData" class="form-control w-100">
+                        </div>
 
-                <label>Additional Benefit:</label>
-                <input type="text" id="planBenefits" class="form-control">
+                        <div class="mb-3">
+                            <label for="planMessage" class="form-label">Message:</label>
+                            <input type="text" id="planMessage" class="form-control w-100">
+                        </div>
 
-                <label>Tag:</label>
-                <input type="text" id="planTag" class="form-control">
+                        <div class="mb-3">
+                            <label for="planBenefits" class="form-label">Additional Benefit:</label>
+                            <textarea id="planBenefits" class="form-control w-100" rows="3" style="height: 150px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subscription -->
+                <div class="text-center mt-4">
+                    <label class="fw-bold">Subscriptions:</label>
+                    <div id="subscriptionOptions" class="d-flex flex-wrap justify-content-center gap-4 mt-3">
+                        <!-- Checkboxes will be dynamically added here -->
+                    </div>
+                </div>
             </div>
+
             <div class="modal-footer">
                 <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button class="btn btn-primary" id="savePlan">Save Plan</button>
@@ -217,24 +322,7 @@
     </div>
 </div>
 
-<!-- Delete Confirmation Modal -->
-<div class="modal fade" id="deleteConfirmModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5>Confirm Delete</h5>
-            </div>
-            <div class="modal-body">
-                <p>Enter Admin Password to Delete:</p>
-                <input type="password" id="deletePassword" class="form-control">
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button class="btn btn-danger" id="confirmDelete">Delete</button>
-            </div>
-        </div>
-    </div>
-</div>
+
 
   <!-- Off-canvas Sidebar for Mobile -->
   <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar">
@@ -266,227 +354,403 @@
     </div>
   </div>
 
-  <!-- Bootstrap JS and Popper.js -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <!-- Bootstrap Toast Container for Category name updated -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="updateToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Category name updated successfully!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const apiUrl = "http://localhost:3000/planCategory";
+     <!-- Bootstrap Toast Container for category Activated or deactivated -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="statusToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="toastMessage"></div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
 
-    const categoryTableBody = document.getElementById("categoryTableBody");
-    const categoryNameInput = document.getElementById("categoryName");
-    const saveCategoryButton = document.getElementById("saveCategory");
-    const editCategoryNameInput = document.getElementById("editCategoryName");
-    const saveEditButton = document.getElementById("saveEdit");
-    const deletePasswordInput = document.getElementById("deletePassword");
-    const confirmDeleteButton = document.getElementById("confirmDelete");
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="planToast" class="toast bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+            <!-- <div class="toast-header">
+                <strong class="me-auto">Plan Status</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div> -->
+            <div class="toast-body">
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
 
-    const addCategoryModal = new bootstrap.Modal(document.getElementById("addCategoryModal"));
-    const editCategoryModal = new bootstrap.Modal(document.getElementById("editCategoryModal"));
-    const deleteCategoryModal = new bootstrap.Modal(document.getElementById("deleteCategoryModal"));
-
-    let currentCategoryIdToEdit = null;
-    let currentCategoryIdToDelete = null;
-
-    // Load categories from db.json
-    function loadCategories() {
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => {
-                renderCategories(data);
-            })
-            .catch(error => console.error("Error loading categories:", error));
-    }
-
-    // Render categories in table
-    function renderCategories(categories) {
-        categoryTableBody.innerHTML = "";
-        categories.forEach(category => {
-            const row = document.createElement("tr");
-            row.innerHTML = `
-                <td>${category.id}</td>
-                <td>${category.name}</td>
-                <td>
-                    <button class="btn btn-warning btn-sm edit-btn">Edit</button>
-                    <button class="btn btn-danger btn-sm delete-btn">Delete</button>
-                </td>
-            `;
-            row.querySelector(".edit-btn").addEventListener("click", () => {
-                currentCategoryIdToEdit = category.id;
-                editCategoryNameInput.value = category.name;
-                editCategoryModal.show();
-            });
-            row.querySelector(".delete-btn").addEventListener("click", () => {
-                currentCategoryIdToDelete = category.id;
-                deleteCategoryModal.show();
-            });
-            categoryTableBody.appendChild(row);
+    
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script for Category -->
+    <script src="planManagerCategory.js"></script>
+   
+   <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetchPlans();
+            fetchCategory();
         });
-    }
 
-    // Add new category
-    saveCategoryButton.addEventListener("click", function () {
-        const categoryName = categoryNameInput.value.trim();
-        if (!categoryName) {
-            alert("Please enter a category name.");
-            return;
+        function fetchPlans() {
+            fetch("http://localhost:8091/plans")
+                .then(response => {
+                    if (!response.ok) throw new Error("Network response was not ok");
+                    return response.json();
+                })
+                .then(plans => {
+                    const activeTableBody = document.getElementById("activePlanTableBody");
+                    const inactiveTableBody = document.getElementById("inactivePlanTableBody");
+
+                    activeTableBody.innerHTML = ""; // Clear tables before appending rows
+                    inactiveTableBody.innerHTML = "";
+
+                    plans.forEach(plan => {
+                        const row = createPlanRow(plan);
+                        if (plan.status === "ACTIVE") {
+                            activeTableBody.appendChild(row);
+                        } else {
+                            inactiveTableBody.appendChild(row);
+                        }
+                    });
+                })
+                .catch(error => console.error("Error fetching plans:", error));
         }
 
-        const newCategory = { name: categoryName };
-
-        fetch(apiUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newCategory)
-        })
-        .then(() => {
-            addCategoryModal.hide();
-            categoryNameInput.value = "";
-            loadCategories(); // Refresh table
-        })
-        .catch(error => console.error("Error adding category:", error));
-    });
-
-    // Save edited category
-    saveEditButton.addEventListener("click", function () {
-        const newCategoryName = editCategoryNameInput.value.trim();
-        if (!newCategoryName) {
-            alert("Please enter a category name.");
-            return;
-        }
-
-        fetch(`${apiUrl}/${currentCategoryIdToEdit}`, {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name: newCategoryName })
-        })
-        .then(() => {
-            editCategoryModal.hide();
-            loadCategories();
-        })
-        .catch(error => console.error("Error updating category:", error));
-    });
-
-    // Delete category (with password check)
-    confirmDeleteButton.addEventListener("click", function () {
-        const password = deletePasswordInput.value;
-        const correctPassword = "123456";
-
-        if (password !== correctPassword) {
-            alert("Incorrect password!");
-            return;
-        }
-
-        fetch(`${apiUrl}/${currentCategoryIdToDelete}`, {
-            method: "DELETE"
-        })
-        .then(() => {
-            deleteCategoryModal.hide();
-            deletePasswordInput.value = "";
-            loadCategories();
-        })
-        .catch(error => console.error("Error deleting category:", error));
-    });
-
-    // Initial load
-    loadCategories();
-});
-
-  </script>
-  
-  <script>
-    document.addEventListener("DOMContentLoaded", async () => {
-    const planTableBody = document.getElementById("planTableBody");
-    const savePlanButton = document.getElementById("savePlan");
-    let plans = [];
-    let editPlanId = null;
-
-    const loadPlans = async () => {
-        const res = await fetch("http://localhost:3000/plans");
-        plans = await res.json();
-        renderPlans();
-    };
-
-    const renderPlans = () => {
-        planTableBody.innerHTML = plans.map(plan => `
-            <tr>
-                <td>${plan.id}</td>
-                <td>${plan.category}</td>
-                <td>${plan.price}</td>
+        // Function to create a plan row
+        function createPlanRow(plan) {
+            const row = document.createElement("tr");
+            row.setAttribute("data-plan-id", plan.planId);
+            row.innerHTML = `
+                <td>${plan.planId}</td>
+                <td>${plan.category.categoryName}</td>
+                <td>₹${plan.planPrice}</td>
                 <td>${plan.validity}</td>
-                <td>${plan.calls}</td>
+                <td>${plan.voice}</td>
                 <td>${plan.data}</td>
                 <td>${plan.message}</td>
-                <td>${plan.benefits}</td>
-                <td>${plan.tag}</td>
-                <td>
-                    <button class="btn btn-warning btn-sm" onclick="editPlan('${plan.id}')">Edit</button>
-                    <button class="btn btn-danger btn-sm" onclick="confirmDelete('${plan.id}')">Delete</button>
+                <td>${plan.description}</td>
+                <td>${plan.ottPlans && plan.ottPlans.length > 0 ? plan.ottPlans.map(ott => ott.platformName).join(", ") : '-'}</td>
+                <td>${plan.tag ? plan.tag : '-'}</td>
+                <td class="d-flex gap-2">
+                    <button class="btn btn-warning btn-sm" onclick="editPlan('${plan.planId}')">
+                        <i class="bi bi-pencil-fill pe-1"></i>Edit
+                    </button>
+                    <button class="btn ${plan.status === 'ACTIVE' ? 'btn-danger' : 'btn-success'} btn-sm btn-status-toggle"
+                        onclick="togglePlanStatus('${plan.planId}', '${plan.status}')">
+                        ${plan.status === 'ACTIVE' ? 'Deactivate' : 'Activate'}
+                    </button>
                 </td>
-            </tr>
-        `).join("");
-    };
-
-    savePlanButton.addEventListener("click", async () => {
-        const plan = {
-            category: document.getElementById("planCategory").value,
-            price: document.getElementById("planPrice").value,
-            validity: document.getElementById("planValidity").value,
-            calls: document.getElementById("planCalls").value,
-            data: document.getElementById("planData").value,
-            message: document.getElementById("planMessage").value,
-            benefits: document.getElementById("planBenefits").value,
-            tag: document.getElementById("planTag").value
-        };
-
-        const url = editPlanId ? `http://localhost:3000/plans/${editPlanId}` : "http://localhost:3000/plans";
-        const method = editPlanId ? "PATCH" : "POST";
-
-        await fetch(url, {
-            method,
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(plan)
-        });
-
-        editPlanId = null;
-        document.getElementById("addPlanModal").querySelectorAll("input, select").forEach(input => input.value = "");
-        bootstrap.Modal.getInstance(document.getElementById("addPlanModal")).hide();
-
-        loadPlans();
-    });
-
-    window.editPlan = (id) => {
-        const plan = plans.find(p => p.id == id);
-        if (!plan) return;
-
-        editPlanId = id;
-        document.getElementById("planCategory").value = plan.category;
-        document.getElementById("planPrice").value = plan.price;
-        document.getElementById("planValidity").value = plan.validity;
-        document.getElementById("planCalls").value = plan.calls;
-        document.getElementById("planData").value = plan.data;
-        document.getElementById("planMessage").value = plan.message;
-        document.getElementById("planBenefits").value = plan.benefits;
-        document.getElementById("planTag").value = plan.tag;
-
-        bootstrap.Modal.getOrCreateInstance(document.getElementById("addPlanModal")).show();
-    };
-
-    window.confirmDelete = async (id) => {
-        if (prompt("Enter Admin Password to delete this plan:") !== "123456") {
-            alert("Incorrect password!");
-            return;
+            `;
+            return row;
         }
 
-        await fetch(`http://localhost:3000/plans/${id}`, { method: "DELETE" });
-        loadPlans();
+
+        function showToast(message, isError = false) {
+            const toastElement = document.getElementById("planToast");
+            const toastBody = toastElement.querySelector(".toast-body");
+
+            // Set toast message
+            toastBody.textContent = message;
+
+            // Set background color based on success/error
+            toastElement.classList.remove("bg-success", "bg-danger");
+            toastElement.classList.add(isError ? "bg-danger" : "bg-success");
+
+            // Show the toast
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();
+        }
+
+        function togglePlanStatus(planId, currentStatus) {
+            const newStatus = currentStatus === "ACTIVE" ? "inactive" : "active";
+
+            if (!confirm(`Are you sure you want to ${newStatus.toLowerCase()} this plan?`)) return;
+
+            fetch(`http://localhost:8091/plans/${planId}/${newStatus}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" }
+            })
+            .then(response => {
+                if (!response.ok) throw new Error("Failed to update plan status");
+                return response.text();
+            })
+            .then(message => {
+                console.log("Response from server:", message);
+                
+                showToast(message); // Show Bootstrap toast
+
+                // ✅ Instead of manually moving the row, fetch updated plans to refresh the UI
+                fetchPlans(); 
+            })
+            .catch(error => {
+                console.error("Error updating plan status:", error);
+                showToast("Failed to update plan status. Please try again.", true);
+            });
+        }
+
+        // ✅ Toast function to display Bootstrap toast messages
+        function showToast(message, isError = false) {
+            const toastElement = document.getElementById("planToast");
+            const toastBody = toastElement.querySelector(".toast-body");
+
+            toastBody.textContent = message;
+
+            toastElement.classList.remove("bg-success", "bg-danger");
+            toastElement.classList.add(isError ? "bg-danger" : "bg-success");
+
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();
+        }
+
+        document.getElementById("addPlanModal").addEventListener("hide.bs.modal", function () {
+        document.getElementById("categoryDropdown").value = "";
+        document.getElementById("planPrice").value = "";
+        document.getElementById("planValidity").value = "";
+        document.getElementById("planCalls").value = "Unlimited Calls";
+        document.getElementById("planTag").value = "";
+        document.getElementById("planData").value = "";
+        document.getElementById("planMessage").value = "";
+        document.getElementById("planBenefits").value = "";
+
+        // Uncheck all subscription checkboxes
+        document.querySelectorAll("#subscriptionOptions input[type='checkbox']").forEach(checkbox => {
+            checkbox.checked = false;
+        });
+    });
+
+        // Fetch the categories and show it in a dropdown
+        function fetchCategory() {
+            fetch("http://localhost:8091/category")  // Adjust the URL as per your API
+                .then(response => response.json())
+                .then(data => {
+                    let dropdown = document.getElementById("categoryDropdown");
+                    dropdown.innerHTML = '<option value="" class="text-muted">Select Category</option>'; // Default option
+
+                    data.forEach(category => {
+                        let option = document.createElement("option");
+                        option.value = category.categoryId; // Use categoryId as value
+                        option.textContent = category.categoryName; // Display categoryName
+                        dropdown.appendChild(option);
+                    });
+                })
+                .catch(error => console.error("Error fetching categories:", error));
+        }
+
+        function fetchSubscriptions() {
+    fetch("http://localhost:8091/Ott-Platform")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to fetch subscriptions");
+            }
+            return response.json();
+        })
+        .then(subscriptions => {
+            const subscriptionContainer = document.getElementById("subscriptionOptions");
+            subscriptionContainer.innerHTML = ""; // Clear existing options
+
+            subscriptions.forEach(subscription => {
+                const checkboxDiv = document.createElement("div");
+                checkboxDiv.classList.add("form-check", "custom-checkbox");
+
+                checkboxDiv.innerHTML = `
+                    <input class="form-check-input" type="checkbox" id="ott-${subscription.ottId}" data-id="${subscription.ottId}" value="${subscription.platformName}">
+                    <label class="form-check-label fw-light" for="ott-${subscription.ottId}">${subscription.platformName}</label>
+                `;
+
+                subscriptionContainer.appendChild(checkboxDiv);
+            });
+        })
+        .catch(error => console.error("Error fetching subscriptions:", error));
+}
+
+            // Fetch subscriptions when modal opens
+document.getElementById("addPlanModal").addEventListener("show.bs.modal", fetchSubscriptions);
+
+document.getElementById("savePlan").addEventListener("click", async () => {
+    const planId = document.getElementById("savePlan").getAttribute("data-plan-id"); // Get ID if editing
+    const categoryId = document.getElementById("categoryDropdown").value;
+    const planPrice = document.getElementById("planPrice").value;
+    const validity = document.getElementById("planValidity").value;
+    const voice = document.getElementById("planCalls").value;
+    const data = document.getElementById("planData").value;
+    const message = document.getElementById("planMessage").value;
+    const description = document.getElementById("planBenefits").value;
+    const tag = document.getElementById("planTag").value;
+
+    // ✅ Collect selected OTT platforms
+    const selectedOtts = [];
+    document.querySelectorAll("#subscriptionOptions input:checked").forEach(checkbox => {
+        selectedOtts.push({ ottId: checkbox.getAttribute("data-id") });
+    });
+
+    // ✅ Proper JSON format
+    const planData = {
+        category: { categoryId },
+        planPrice,
+        validity,
+        voice,
+        data,
+        message,
+        description,
+        tag,
+        status: "ACTIVE",
+        ottPlans: selectedOtts
     };
 
-    loadPlans();
+    console.log("Sending data:", JSON.stringify(planData, null, 2)); // ✅ Debugging
+
+    try {
+        let url = "http://localhost:8091/plans";
+        let method = "POST";
+
+        if (planId) {
+            url = `http://localhost:8091/plans/${planId}`; // Update existing plan
+            method = "PUT";
+        }
+
+        const response = await fetch(url, {
+            method: method,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(planData),
+        });
+
+        if (!response.ok) {
+            const errorResponse = await response.json();
+            console.error("Error Response:", errorResponse);
+            throw new Error(errorResponse.message || "Failed to save plan");
+        }
+
+        alert(planId ? "Plan updated successfully!" : "Plan saved successfully!");
+        location.reload();
+    } catch (error) {
+        console.error("Error saving plan:", error);
+        alert("Failed to save plan. Check console for details.");
+    }
 });
 
-  </script>
+// ✅ Function to reset the form
+function resetForm() {
+    document.getElementById("categoryDropdown").value = "";
+    document.getElementById("planPrice").value = "";
+    document.getElementById("planValidity").value = "";
+    document.getElementById("planCalls").value = "Unlimited";
+    document.getElementById("planData").value = "";
+    document.getElementById("planMessage").value = "";
+    document.getElementById("planBenefits").value = "";
+    document.getElementById("planTag").value = "";
+    document.querySelectorAll("#subscriptionOptions input:checked").forEach(checkbox => checkbox.checked = false);
+}
+
+
+async function editPlan(planId) {
+    try {
+        const response = await fetch(`http://localhost:8091/plans/${planId}`);
+        if (!response.ok) {
+            throw new Error("Failed to fetch plan details");
+        }
+        const plan = await response.json();
+
+        // Populate the form fields
+        document.getElementById("categoryDropdown").value = plan.category.categoryId;
+        document.getElementById("planPrice").value = plan.planPrice;
+        document.getElementById("planValidity").value = plan.validity;
+        document.getElementById("planCalls").value = plan.voice;
+        document.getElementById("planData").value = plan.data;
+        document.getElementById("planMessage").value = plan.message;
+        document.getElementById("planBenefits").value = plan.description;
+        document.getElementById("planTag").value = plan.tag || "";
+
+        // Fetch and set OTT platform checkboxes
+        await fetchSubscriptions();
+        setTimeout(() => {
+            const selectedOtts = new Set(plan.ottPlans.map(ott => ott.ottId));
+            document.querySelectorAll("#subscriptionOptions input[type='checkbox']").forEach(checkbox => {
+                checkbox.checked = selectedOtts.has(checkbox.getAttribute("data-id"));
+            });
+        }, 300);
+
+        // Store planId for updating
+        document.getElementById("savePlan").setAttribute("data-plan-id", planId);
+
+        // Show the modal
+        new bootstrap.Modal(document.getElementById("addPlanModal")).show();
+
+    } catch (error) {
+        console.error("Error fetching plan:", error);
+        alert("Failed to load plan details.");
+    }
+}
+
+function fetchCategoriesForFilter() {
+    fetch("http://localhost:8091/category")  // Adjust API URL if needed
+        .then(response => response.json())
+        .then(categories => {
+            const filterMenu = document.getElementById("categoryFilter");
+
+            // Clear existing categories except "All Plans"
+            filterMenu.innerHTML = `<li><a class="dropdown-item" href="#" data-filter="all">All Plans</a></li>`;
+
+            categories.forEach(category => {
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `<a class="dropdown-item" href="#" data-filter="${category.categoryId}">${category.categoryName}</a>`;
+                filterMenu.appendChild(listItem);
+            });
+
+            // Attach event listeners after populating categories
+            document.querySelectorAll("#categoryFilter .dropdown-item").forEach(item => {
+                item.addEventListener("click", function (event) {
+                    event.preventDefault(); // Prevents page from moving up
+                    const selectedCategory = this.getAttribute("data-filter");
+                    
+                    const selectedText = this.textContent; 
+                    document.getElementById("selectedCategory").textContent = selectedText; // ✅ Updates only category text
+
+                    // Call function to filter plans
+                    filterPlans(selectedCategory);
+                });
+            });
+        })
+        .catch(error => console.error("Error fetching categories:", error));
+}
+
+// Call function to fetch categories when page loads
+document.addEventListener("DOMContentLoaded", fetchCategoriesForFilter);
+
+function filterPlans(categoryId) {
+    fetch("http://localhost:8091/plans")
+        .then(response => response.json())
+        .then(plans => {
+            const activeTableBody = document.getElementById("activePlanTableBody");
+            const inactiveTableBody = document.getElementById("inactivePlanTableBody");
+
+            activeTableBody.innerHTML = "";
+            inactiveTableBody.innerHTML = "";
+
+            plans.forEach(plan => {
+                if (categoryId === "all" || plan.category.categoryId === categoryId) {
+                    const row = createPlanRow(plan);
+                    if (plan.status === "ACTIVE") {
+                        activeTableBody.appendChild(row);
+                    } else {
+                        inactiveTableBody.appendChild(row);
+                    }
+                }
+            });
+        })
+        .catch(error => console.error("Error fetching plans:", error));
+}
+
+    </script>
 </body>
 </html>
