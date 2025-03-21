@@ -31,6 +31,13 @@ public class UserController {
         return ResponseEntity.ok(exists);
     }
     
+    @GetMapping("/findByMobile/{mobile}")
+    public ResponseEntity<User> getUserByMobile(@PathVariable String mobile) {
+        Optional<User> user = userService.findByMobile(mobile);
+        return user.map(ResponseEntity::ok)
+                   .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+    
     @PostMapping
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);

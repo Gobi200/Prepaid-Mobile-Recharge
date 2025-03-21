@@ -34,6 +34,10 @@
             background-color: #023E8A;
             color: white;
         }
+        .recharge_table{
+            background-color: #023E8A;
+            color: white;
+        }
         .knowmore_button{
             color: white;
             background-color: #023E8A;
@@ -45,13 +49,18 @@
         .btn_function{
             letter-spacing: 1px;
         }
+        /* Custom sidebar width */
+        #userDetailsSidebar {
+            width: 50% !important; /* Adjust as needed */
+            min-width: 500px; /* Prevent it from being too small */
+        }
     </style>
 </head>
 <body>
     <!-- Sidebar -->
-    <div class="sidebar d-none d-md-block">
+    <div class="d-md-block d-none sidebar">
         <h3 class="text-center pb-5">Admin Panel</h3>
-        <ul class="nav flex-column gap-3">
+        <ul class="flex-column nav gap-3">
         <li class="nav-item">
             <a class="nav-link" href="admin.html"><i class="bi bi-window-plus pe-2"></i>Dashboard</a>
         </li>
@@ -78,7 +87,7 @@
         <!-- Navbar -->
         <nav class="navbar">
         <div class="container-fluid">
-            <button class="btn btn-primary d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar">
+            <button class="d-md-none btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar">
             ☰
             </button>
             <a class="navbar-brand" href="#">
@@ -91,27 +100,24 @@
         <!-- Dynamic Content -->
         <div id="content" class="p-4">
             <!-- Users Heading and Search Bar -->
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex align-items-center justify-content-between mb-3">
                 <h2>Our Users</h2>
-                <div class="input-group search-bar me-2" style="width: 300px;">
+                <div class="input-group me-2 search-bar" style="width: 300px;">
                     <span class="input-group-text"><i class="bi bi-search"></i></span>
                     <input type="text" id="searchInput" class="form-control" placeholder="Search by mobile number">
                 </div>
             </div>
             
             <!-- Nav Tabs -->
-            <ul class="nav nav-tabs" id="userTabs" role="tablist">
+            <!-- <ul class="nav nav-tabs" id="userTabs" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="active-user-tab" data-bs-toggle="tab" data-bs-target="#active-user" type="button" role="tab" aria-controls="active-user" aria-selected="true">Active User</button>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="deactivated-user-tab" data-bs-toggle="tab" data-bs-target="#deactivated-user" type="button" role="tab" aria-controls="deactivated-user" aria-selected="false">Deactivated User</button>
-                </li>
-            </ul>
+            </ul> -->
             <!-- Tab Content -->
             <div class="tab-content" id="userTabsContent">
             <!-- Active User Tab -->
-            <div class="tab-pane fade show active" id="active-user" role="tabpanel" aria-labelledby="active-user-tab">
+            <div class="active fade show tab-pane" id="active-user" role="tabpanel" aria-labelledby="active-user-tab">
                 <div class="table-responsive">
                     <table class="table table-bordered mt-3">
                         <thead class="users_table">
@@ -130,26 +136,7 @@
                 </div>
             </div>
 
-            <!-- Deactivated User Tab -->
-            <div class="tab-pane fade" id="deactivated-user" role="tabpanel" aria-labelledby="deactivated-user-tab">
-                <div class="table-responsive">
-                    <table class="table table-bordered mt-3">
-                        <thead class="users_table">
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Mobile Number</th>
-                                <th>Email</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="deactivated-user-table">
-                            <!-- Deactivated users will be populated dynamically -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
+        
             </div>
         </div>
     </div>
@@ -161,7 +148,7 @@
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body">
-        <ul class="nav flex-column">
+        <ul class="flex-column nav">
             <li class="nav-item">
             <a class="nav-link text-dark" href="admin.html">Dashboard</a>
             </li>
@@ -184,33 +171,7 @@
         </div>
     </div>
 
-    <!-- Know More Modal -->
-    <div class="modal fade" id="knowMoreModal" tabindex="-1" aria-labelledby="knowMoreModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="knowMoreModalLabel">Previous Transactions</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <table class="table table-bordered">
-                        <thead class="users_table">
-                            <tr>
-                                <th>S.No</th>
-                                <th>Plan</th>
-                                <th>Date and Time</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="transaction-table">
-                            <!-- Transactions will be populated dynamically -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
+   
     <!-- Password Modal -->
     <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -230,167 +191,167 @@
         </div>
     </div>
 
+<!-- User Details Sidebar (Right) -->
+<div id="userDetailsSidebar" class="shadow-lg offcanvas offcanvas-end" tabindex="-1" aria-labelledby="userDetailsLabel">
+    <div class="bg-primary text-white offcanvas-header">
+        <h5 class="fw-bold offcanvas-title" id="userDetailsLabel">
+            <i class="bi bi-person-circle"></i> User Details
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <!-- User Details Section -->
+        <h6 class="border-bottom text-primary mb-3 pb-2"><i class="bi bi-person"></i> User Details</h6>
+        <div class="g-3 row">
+            <div class="col-6 pe-5"><strong><i class="bi bi-person-badge"></i> ID:</strong> <span id="detail-userId"></span></div>
+            <div class="col-6 pe-5"><strong><i class="bi bi-person"></i> Name:</strong> <span id="detail-username"></span></div>
+            <div class="col-6 pe-5"><strong><i class="bi bi-phone"></i> Mobile:</strong> <span id="detail-mobile"></span></div>
+            <div class="col-6 pe-5"><strong><i class="bi bi-envelope"></i> Email:</strong> <span id="detail-email"></span></div>
+            <div class="col-6 pe-5"><strong><i class="bi bi-credit-card-2-front"></i> Aadhar:</strong> <span id="detail-aadhar"></span></div>
+            <div class="col-6 pe-5"><strong><i class="bi bi-calendar"></i> DOB:</strong> <span id="detail-dob"></span></div>
+        </div>
+
+        <!-- Address Details Section -->
+        <h6 class="border-bottom text-primary mb-3 mt-4 pb-2"><i class="bi bi-geo-alt"></i> Address Details</h6>
+        <div class="g-3 row">
+            <div class="col-6"><strong><i class="bi bi-house-door"></i> Address:</strong> <span id="detail-address"></span></div>
+            <div class="col-6"><strong><i class="bi bi-buildings"></i> City:</strong> <span id="detail-city"></span></div>
+            <div class="col-6"><strong><i class="bi bi-signpost"></i> Pincode:</strong> <span id="detail-pincode"></span></div>
+            <div class="col-6"><strong><i class="bi bi-globe"></i> State:</strong> <span id="detail-state"></span></div>
+            <div class="col-6"><strong><i class="bi bi-flag"></i> Country:</strong> <span id="detail-country"></span></div>
+        </div>
+
+        <!-- Recharge Table Section -->
+        <h6 class="border-bottom text-primary mb-3 mt-4 pb-2"><i class="bi bi-cash-stack"></i> Recharge</h6>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="recharge_table">
+                    <tr class="text-center">
+                        <th>Recharge Date</th>
+                        <th>Plan ID</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="rechargeTableBody">
+                    <!-- Rows will be added dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
   <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
-   
     <script>
-        let activeUsers = [];
-        let deactivatedUsers = [];
-        let currentAction = '';
-        let currentUserId = null;
-    
-        async function loadUserData() {
-            try {
-                const activeResponse = await fetch('http://localhost:3000/active_users');
-                const deactivatedResponse = await fetch('http://localhost:3000/deactivated_users');
-    
-                activeUsers = await activeResponse.json();
-                deactivatedUsers = await deactivatedResponse.json();
-    
-                activeUsers.forEach(user => {
-                    if (!user.transactions) user.transactions = [];
-                });
-    
-                deactivatedUsers.forEach(user => {
-                    if (!user.transactions) user.transactions = [];
-                });
-    
-                populateTables();
-            } catch (error) {
-                console.error('Failed to load user data:', error);
-                alert('Failed to load user data. Please check your server.');
-            }
-        }
-    
-        function populateTables() {
-            populateActiveUserTable(activeUsers);
-            populateDeactivatedUserTable(deactivatedUsers);
-        }
-    
-        function populateActiveUserTable(users) {
-            const tbody = document.getElementById("active-user-table");
-            tbody.innerHTML = users.map(user => createUserRow(user, 'active')).join("");
-        }
-    
-        function populateDeactivatedUserTable(users) {
-            const tbody = document.getElementById("deactivated-user-table");
-            tbody.innerHTML = users.map(user => createUserRow(user, 'deactivated')).join("");
-        }
-    
-        function createUserRow(user, type) {
-            return `
-                <tr>
-                    <td>${user.id}</td>
-                    <td>${user.name}</td>
-                    <td>${user.mobile}</td>
-                    <td>${user.email}</td>
-                    <td class="d-flex gap-2">
-                        <button class="btn btn-sm knowmore_button" onclick="showTransactions('${String(user.id)}', '${type}')">Know More</button>
-                        <button class="btn btn-sm btn_function btn-${type === 'active' ? 'danger' : 'success'}"
-                            onclick="openPasswordModal(${user.id}, '${type === 'active' ? 'deactivate' : 'activate'}')">
-                            ${type === 'active' ? 'Deactivate' : 'Activate'}
-                        </button>
-                    </td>
-                </tr>
-            `;
-        }
-    
-        function showTransactions(userId, type) {
-    const user = (type === 'active' ? activeUsers : deactivatedUsers).find(u => String(u.id) === String(userId));
+        document.addEventListener("DOMContentLoaded", function () {
+    fetchUsers();
+    document.getElementById("searchInput").addEventListener("input", searchUser);
+});
 
-    if (!user) {
-        alert("User not found!");
+let usersData = []; // Store all users globally
+
+function fetchUsers() {
+    fetch("http://localhost:8091/users") // Adjust endpoint based on your backend
+        .then(response => response.json())
+        .then(data => {
+            usersData = data; // Store all user data
+            displayUsers(usersData);
+        })
+        .catch(error => console.error("Error fetching users:", error));
+}
+
+function displayUsers(users) {
+    const tableBody = document.getElementById("active-user-table");
+    tableBody.innerHTML = ""; // Clear previous data
+
+    users.forEach(user => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${user.userId}</td>
+            <td>${user.username}</td>
+            <td>${user.mobile}</td>
+            <td>${user.email}</td>
+            <td><button class="btn btn-primary knowmore_button" onclick="knowMore('${user.userId}')">Know More</button></td>
+        `;
+
+        tableBody.appendChild(row);
+    });
+}
+
+function searchUser() {
+    const searchValue = document.getElementById("searchInput").value.trim();
+    const filteredUsers = usersData.filter(user => user.mobile.includes(searchValue));
+    displayUsers(filteredUsers);
+}
+
+function knowMore(userId) {
+    fetch(`http://localhost:8091/users/${userId}`)
+        .then(response => response.json())
+        .then(user => {
+            // Populate sidebar with user details
+            document.getElementById("detail-userId").textContent = user.userId;
+            document.getElementById("detail-username").textContent = user.username;
+            document.getElementById("detail-mobile").textContent = user.mobile;
+            document.getElementById("detail-email").textContent = user.email;
+            document.getElementById("detail-aadhar").textContent = user.aadharNo;
+            document.getElementById("detail-dob").textContent = user.dob;
+            document.getElementById("detail-address").textContent = user.address || "N/A";
+            document.getElementById("detail-city").textContent = user.city || "N/A";
+            document.getElementById("detail-pincode").textContent = user.pincode || "N/A";
+            document.getElementById("detail-state").textContent = user.state || "N/A";
+            document.getElementById("detail-country").textContent = user.country || "N/A";
+
+            // Fetch recharge details dynamically
+            fetchRechargeDetails(user.userId);
+
+            // Show sidebar
+            new bootstrap.Offcanvas(document.getElementById("userDetailsSidebar")).show();
+        })
+        .catch(error => console.error("Error fetching user details:", error));
+}
+
+function fetchRechargeDetails(userId) {
+    fetch(`http://localhost:8091/api/recharge/user/${userId}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log("Recharge Data:", data); // Debugging
+            populateRechargeTable(data);
+        })
+        .catch(error => console.error("Error fetching recharge details:", error));
+}
+
+function populateRechargeTable(recharges) {
+    const tableBody = document.getElementById("rechargeTableBody");
+    tableBody.innerHTML = ""; // Clear previous data
+
+    if (!recharges || recharges.length === 0) {
+        tableBody.innerHTML = `<tr><td colspan="4" class="text-center">No recharge history available</td></tr>`;
         return;
     }
 
-    const transactions = user.transactions || [];
-    const tbody = document.getElementById("transaction-table");
+    recharges.forEach(recharge => {
+    const statusColor = recharge.transactionStatus === "SUCCESS" ? "text-success fw-bold" : "text-danger fw-bold";
 
-    if (transactions.length > 0) {
-        tbody.innerHTML = transactions.map((t, i) => {
-            const statusColor = t.status.toLowerCase() === 'success' ? 'text-success' : 'text-danger';
-            return `<tr>
-                        <td>${i + 1}</td>
-                        <td>${t.plan}</td>
-                        <td>${t.date}</td>
-                        <td class="${statusColor} fw-bold">${t.status}</td>
-                    </tr>`;
-        }).join("");
-    } else {
-        tbody.innerHTML = `<tr><td colspan="4">No transactions found</td></tr>`;
-    }
+    const row = document.createElement("tr");
+    row.innerHTML = `
+        <td>${new Date(recharge.rechargeDate).toLocaleDateString()}</td>
+        <td>${recharge.plan ? recharge.plan.planId : "N/A"}</td>
+        <td>₹${recharge.plan ? recharge.plan.planPrice : "N/A"}</td>
+        <td class="${statusColor}">${recharge.transactionStatus || "N/A"}</td>
+    `;
+    tableBody.appendChild(row);
+});
 
-    const modal = new bootstrap.Modal(document.getElementById('knowMoreModal'));
-    modal.show();
 }
 
-    
-        function openPasswordModal(userId, action) {
-            currentUserId = userId;
-            currentAction = action;
-            const modal = new bootstrap.Modal(document.getElementById('passwordModal'));
-            modal.show();
-        }
-    
-        async function validatePassword() {
-            const passwordInput = document.getElementById("passwordInput");
-            if (passwordInput.value === "123456") {
-                if (currentAction === "deactivate") {
-                    await moveUser(currentUserId, 'active', 'deactivated');
-                } else {
-                    await moveUser(currentUserId, 'deactivated', 'active');
-                }
-                bootstrap.Modal.getInstance(document.getElementById('passwordModal')).hide();
-            } else {
-                alert("Incorrect password!");
-            }
-        }
-    
-        async function moveUser(userId, fromType, toType) {
-    const fromUrl = `http://localhost:3000/${fromType}_users/${userId}`;  // userId is string
-    const toUrl = `http://localhost:3000/${toType}_users`;
-
-    try {
-        const userResponse = await fetch(fromUrl);
-        if (!userResponse.ok) throw new Error(`User ${userId} not found`);
-
-        const user = await userResponse.json();
-
-        await fetch(fromUrl, { method: 'DELETE' });
-
-        const response = await fetch(toUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(user)
-        });
-
-        if (!response.ok) {
-            console.error(`Failed to add user to ${toType}:`, await response.text());
-            return;
-        }
-
-        await loadUserData();  // Refresh to keep UI in sync
-    } catch (error) {
-        console.error(`Failed to move user ${userId}:`, error);
-    }
-}
-    
-        function searchUsers() {
-            const searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
-    
-            const filteredActive = activeUsers.filter(user => user.mobile.includes(searchTerm));
-            const filteredDeactivated = deactivatedUsers.filter(user => user.mobile.includes(searchTerm));
-    
-            populateActiveUserTable(filteredActive);
-            populateDeactivatedUserTable(filteredDeactivated);
-        }
-    
-        document.addEventListener("DOMContentLoaded", () => {
-            loadUserData();
-            document.getElementById("searchInput").addEventListener("input", searchUsers);
-        });
     </script>
+    
+
 </body>
 </html>

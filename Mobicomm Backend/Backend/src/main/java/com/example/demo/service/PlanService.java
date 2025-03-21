@@ -144,7 +144,11 @@ public class PlanService {
             throw new RuntimeException("Plan not found with ID: " + planId);
         }
     }
-
+    
+    public String getPlanPrice(String planId) {
+        return planRepo.findPlanPriceById(planId);
+    }
+    
     @Transactional
     public List<Plan> getPlansByCategory(String categoryId) {
         List<Plan> plans = planRepo.findByCategory_CategoryIdAndStatus(categoryId, Status.ACTIVE);

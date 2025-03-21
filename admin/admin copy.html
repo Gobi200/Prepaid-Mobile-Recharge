@@ -44,24 +44,11 @@
             background-color: #03045E;
             color: white;
         }
-        .notify_button {
-            color: white !important;
-            background-color: #023E8A !important;
+        .notify_button{
             letter-spacing: 1px;
-            border: none;
+            border: 1px solid #03045E;
+            color: #03045E;
         }
-
-        .notify_button:hover {
-            background-color: #022c65 !important; /* Slightly darker shade on hover */
-        }
-        .notified {
-            color: #023E8A !important;
-            background-color: transparent !important;
-            font-weight: bold;
-            /* border: 1px solid #023E8A !important; */
-            cursor: not-allowed;
-        }
-
     </style>
 </head>
 <body>
@@ -141,7 +128,7 @@
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead class="expiring_user">
-                        <tr class="text-center">
+                        <tr>
                             <th>User ID</th>
                             <th>Name</th>
                             <th>Phone</th>
@@ -241,10 +228,7 @@ async function fetchExpiringRecharges() {
                     <td>${expiryDate.toLocaleDateString()} ${expiryDate.toLocaleTimeString()}</td>
                     <td class="${expiresInClass}">${expiresInText}</td>
                     <td>
-                        <button class="btn btn-primary btn-sm notify_button" 
-                            data-email="${user.email}" 
-                            data-username="${user.username}" 
-                            data-expiry="${expiryDate.toLocaleDateString()}">
+                        <button class="btn btn-primary btn-sm notify_button" data-email="${user.email}" data-username="${user.username}" data-expiry="${expiryDate.toLocaleDateString()}">
                             Notify
                         </button>
                     </td>
@@ -257,8 +241,6 @@ async function fetchExpiringRecharges() {
         // Attach event listener to all notify buttons
         document.querySelectorAll(".notify_button").forEach(button => {
             button.addEventListener("click", async function () {
-                if (this.disabled) return; // Prevent multiple clicks when disabled
-
                 const email = this.getAttribute("data-email");
                 const username = this.getAttribute("data-username");
                 const expiryDate = this.getAttribute("data-expiry");
@@ -266,25 +248,14 @@ async function fetchExpiringRecharges() {
                 try {
                     const response = await fetch("http://localhost:8091/api/notifications/send", {
                         method: "POST",
-                        headers: { "Content-Type": "application/json" },
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
                         body: JSON.stringify({ email, username, expiryDate }),
                     });
 
                     if (response.ok) {
                         showToast("Notification sent successfully!");
-
-                        // Change button text to "Notified" and disable it
-                        this.innerText = "Notified";
-                        button.classList.add("notified");
-                        this.classList.replace("btn-primary", "btn-secondary");
-                        this.disabled = true;
-
-                        // Re-enable the button after 1 hour
-                        setTimeout(() => {
-                            this.innerText = "Notify";
-                            this.classList.replace("btn-secondary", "btn-primary");
-                            this.disabled = false;
-                        }, 60 * 60 * 1000); // 1 hour in milliseconds
                     } else {
                         showToast("Failed to send notification.", "danger");
                     }
@@ -308,6 +279,7 @@ function showToast(message, type = "success") {
     const toast = new bootstrap.Toast(toastEl);
     toast.show();
 }
+
 
     </script>
     </body>

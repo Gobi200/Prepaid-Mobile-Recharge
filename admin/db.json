@@ -145,54 +145,6 @@
       "email": "Alicejohn@gmail.com",
       "plan": "₹ 199 Plan",
       "expiry": "2023-10-27"
-    },
-    {
-      "id": "15",
-      "name": "Gilbert",
-      "phone": "9894035978",
-      "email": "Gilbert@gmail.com",
-      "plan": "₹ 1899 Plan",
-      "expiry": "2023-10-27"
-    },
-    {
-      "id": "24",
-      "name": "Ramesh Tilak",
-      "phone": "763979850",
-      "email": "tilakramesh@gmail.com",
-      "plan": "₹ 899 Plan",
-      "expiry": "2023-10-27"
-    },
-    {
-      "id": "30",
-      "name": "Karan Sharma",
-      "phone": "6397891234",
-      "email": "karan890@gmail.com",
-      "plan": "₹ 449 Plan",
-      "expiry": "2023-10-27"
-    },
-    {
-      "id": "31",
-      "name": "Priya Verma",
-      "phone": "9876543210",
-      "email": "priya.verma@gmail.com",
-      "plan": "₹ 599 Plan",
-      "expiry": "2023-11-15"
-    },
-    {
-      "id": "42",
-      "name": "Amit Singh",
-      "phone": "8756392412",
-      "email": "amit.singh@gmail.com",
-      "plan": "₹ 2399 Plan",
-      "expiry": "2023-12-05"
-    },
-    {
-      "id": "53",
-      "name": "Neha Gupta",
-      "phone": "9123456780",
-      "email": "neha.gupta@yahoo.com",
-      "plan": "₹ 699 Plan",
-      "expiry": "2023-09-30"
     }
   ],
   "active_users": [
@@ -316,24 +268,6 @@
           "status": "Success"
         }
       ]
-    },
-    {
-      "id": "8",
-      "name": "Anita Das",
-      "mobile": "9876543217",
-      "email": "anita@example.com",
-      "transactions": [
-        {
-          "plan": "₹299 Plan",
-          "date": "2024-02-22 02:00 PM",
-          "status": "Success"
-        },
-        {
-          "plan": "₹199 Plan",
-          "date": "2024-02-28 11:30 AM",
-          "status": "Success"
-        }
-      ]
     }
   ],
   "deactivated_users": [
@@ -376,6 +310,24 @@
       "mobile": "9876543229",
       "email": "sophia@example.com",
       "transactions": []
+    },
+    {
+      "id": "8",
+      "name": "Anita Das",
+      "mobile": "9876543217",
+      "email": "anita@example.com",
+      "transactions": [
+        {
+          "plan": "₹299 Plan",
+          "date": "2024-02-22 02:00 PM",
+          "status": "Success"
+        },
+        {
+          "plan": "₹199 Plan",
+          "date": "2024-02-28 11:30 AM",
+          "status": "Success"
+        }
+      ]
     }
   ],
   "planCategory": [

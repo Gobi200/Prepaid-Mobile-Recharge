@@ -17,27 +17,56 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(window.location.search);
-    
-    document.getElementById('price').innerHTML = `<i class="bi bi-currency-rupee"></i>${params.get('price')}`;
-    document.getElementById('validity').textContent = params.get('validity');
-    document.getElementById('data').textContent = params.get('data');
-    document.getElementById('calls').textContent = params.get('voice');
-    document.getElementById('sms').textContent = params.get('message');
-    document.getElementById('benefit').textContent = params.get('description');
+       document.addEventListener("DOMContentLoaded", function () {
+            const params = new URLSearchParams(window.location.search);
+            const planId = params.get('planId');
 
-    const subscription = params.get('subscriptions');
-    const subscriptionImage = document.getElementById('subscriptionImage');
+            if (planId) {
+                fetchPlanDetails(planId);
+            }
 
-    if (subscription && subscription.startsWith("http")) {
-        subscriptionImage.src = decodeURIComponent(subscription);
-        subscriptionImage.style.display = 'block';
-    } else {
-        subscriptionImage.style.display = 'none';
-    }
-});
+            function fetchPlanDetails(planId) {
+                fetch(`http://localhost:8091/plans/${planId}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Plan not found");
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+            console.log("Fetched Plan Data:", data); // Check full response
+            console.log("OTT Platforms:", data.ottPlatforms); // Debug OTT Platforms
 
+            document.getElementById('price').innerHTML = `<i class="bi bi-currency-rupee"></i>${data.planPrice}`;
+            document.getElementById('validity').textContent = data.validity;
+            document.getElementById('data').textContent = data.data;
+            document.getElementById('calls').textContent = data.voice;
+            document.getElementById('sms').textContent = data.message;
+            document.getElementById('benefit').textContent = data.description;
+
+            // Debugging: Log if ottPlatforms is empty
+            if (!data.ottPlatforms || data.ottPlatforms.length === 0) {
+                console.warn("No OTT Platforms found");
+            } else {
+                console.log("OTT Platforms Available:", data.ottPlatforms);
+            }
+
+            // Generate OTT icons dynamically
+            let subscriptionIcons = data.ottPlans && data.ottPlans.length > 0
+            ? data.ottPlans.map(ott => 
+                `<img src="Assert/PlanImages/${ott.icons}.png" alt="${ott.platformName}" class="ott-icon ms-3" style="width : 40px;height: auto">`
+            ).join("")
+            : "No OTT benefits";
+
+            document.getElementById('subscriptionIcons').innerHTML = subscriptionIcons;
+        })
+
+                    .catch(error => {
+                        console.error("Error fetching plan:", error);
+                        alert("Failed to load plan details.");
+                    });
+            }
+        });
 
         function showPaymentFields() {
             var paymentMethod = document.getElementById("paymentMethod").value;
@@ -59,9 +88,9 @@
                     <p><strong><i class="bi bi-telephone-fill icon_color"></i></strong> <span id="calls"></span></p>
                     <p><strong><i class="bi bi-chat-dots-fill icon_color"></i></strong> <span id="sms"></span></p>
                   
-                    <div class="text-center">
-                        <img id="subscriptionImage" src="" alt="Subscription Benefit" class="img-fluid mb-3" style="display: none; max-width: 150px;">
-                    </div>
+                    <p><i class="bi bi-bell-fill icon_color pe-2"></i> Subscription:</p>
+                    <div id="subscriptionIcons"></div>
+
                     <p><strong>Benefit:</strong></p>
                     <p class="pt-0"><li><span id="benefit"></span></li></p>
                 </div>
@@ -294,6 +323,46 @@
             link.click();
             document.body.removeChild(link);
         }
+        async function storeRechargeHistory() {
+    try {
+        // Get mobile number from localStorage
+        const mobileNumber = localStorage.getItem("mobileNumber");
+        if (!mobileNumber) {
+            console.error("Mobile number not found in localStorage.");
+            return;
+        }
+
+        // Get plan ID & price from URL
+        const params = new URLSearchParams(window.location.search);
+        const planId = params.get("planId");
+
+
+        // Prepare recharge data (no need to get `userId`, backend does it)
+        const rechargeData = {
+            mobile: mobileNumber,  
+            planId: planId,
+            paymentMethod: "RAZORPAY"
+        };
+
+        // Store recharge history
+        const response = await fetch("http://localhost:8091/recharge", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(rechargeData)
+        });
+
+        if (!response.ok) throw new Error("Failed to store recharge history");
+        console.log("Recharge history stored successfully!");
+
+    } catch (error) {
+        console.error("Error storing recharge history:", error);
+    }
+}
+
+// Call this function after payment success animation
+setTimeout(storeRechargeHistory, 2500);
+
+
     </script>
 </body>
 </html>

@@ -92,7 +92,7 @@
 
     <!-- NAVIGATION BAR -->
     <div class="header">
-        <nav class="navbar navbar-expand-md custom-navbar fixed-top">
+        <nav class="navbar navbar-expand-md fixed-top custom-navbar">
             <div class="container-fluid">
                 <!-- Navbar Brand (Left) -->
                 <a class="navbar-brand logo" href="Home.html">
@@ -100,22 +100,22 @@
                 </a>
     
                 <!-- Navbar Links (Visible on Medium and Larger Screens) -->
-                <div class="d-md-flex d-none flex-grow-1 justify-content-center">
+                <div class="d-none d-md-flex justify-content-center flex-grow-1">
                     <div class="navbar-nav">
-                        <a class="nav_font nav-link" href="Home.html">Home</a>
-                        <a class="nav_font nav-link" href="about.html">About</a>
-                        <a class="nav_font nav-link active fw-bold" href="viewPlans.html">View Plans</a>
-                        <a class="nav_font nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link nav_font" href="Home.html">Home</a>
+                        <a class="nav-link nav_font" href="about.html">About</a>
+                        <a class="nav-link active nav_font fw-bold" href="viewPlans.html">View Plans</a>
+                        <a class="nav-link nav_font" href="contact.html">Contact</a>
                     </div>
                 </div>
     
                 <!-- User Icon & Offcanvas Toggle (Right Side) -->
                 <div class="d-flex align-items-center">
                     <!-- User Icon -->
-                    <a href="userLogin.html" class="me-3"><i class="bi bi-person-circle fs-4 header_icon_color"></i></a>
+                    <a href="userLogin.html" class="me-3"><i class="bi bi-person-circle header_icon_color fs-4"></i></a>
     
                     <!-- Offcanvas Toggle Button (Visible on Mobile & Tablets) -->
-                    <button class="d-md-none btn btn-outline-secondary border-0" type="button" data-bs-toggle="offcanvas"
+                    <button class="btn btn-outline-secondary d-md-none border-0" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                         <i class="bi bi-list fs-3"></i>
                     </button>
@@ -124,7 +124,7 @@
         </nav>
     
         <!-- Offcanvas Navigation (Only for Mobile & Tablet Screens) -->
-        <div class="d-md-none custom-offcanvas offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+        <div class="offcanvas offcanvas-end d-md-none custom-offcanvas" tabindex="-1" id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
@@ -132,10 +132,10 @@
             </div>
             <div class="offcanvas-body">
                 <div class="navbar-nav">
-                    <a class="nav_font nav-link" href="Home.html">Home</a>
-                    <a class="nav_font nav-link" href="about.html">About</a>
-                    <a class="nav_font nav-link active fw-bold" href="viewPlans.html">View Plans</a>
-                    <a class="nav_font nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link nav_font" href="Home.html">Home</a>
+                    <a class="nav-link nav_font" href="about.html">About</a>
+                    <a class="nav-link active nav_font fw-bold" href="viewPlans.html">View Plans</a>
+                    <a class="nav-link nav_font" href="contact.html">Contact</a>
                 </div>
             </div>
         </div>
@@ -143,18 +143,18 @@
 
 
     <div class="container">
-        <div class="d-flex row justify-content-center">
+        <div class="row d-flex justify-content-center">
             <!-- Categories Navigation -->
             <div class="col-12 shadow">
-                <div class="text-center category-container">
+                <div class="category-container text-center">
                     <h4 class="text-center fw-bold mb-3">PLAN CATEGORY</h4>
-                    <div class="d-flex flex-nowrap overflow-auto" id="category-container"></div>
+                    <div class="d-flex overflow-auto flex-nowrap" id="category-container"></div>
                 </div>
             </div>
 
             <!-- Plans Display -->
             <div class="col-lg-12 col-md-12 mt-3">
-                <h2 id="selected-category-name" class="text-center mb-4 mt-3"></h2>
+                <h2 id="selected-category-name" class="mt-3 mb-4 text-center"></h2>
                 <div id="plans-container" class="row"></div>
             </div>
         </div>
@@ -242,20 +242,20 @@
                 let ottCount = plan.ottPlans?.length || 0;
                 let ottDisplay = ottCount > 0 ? `<span class="fs-6">${ottCount} OTT's</span>` : "";
                 let subscriptionIcons = plan.ottPlans?.length
-                    ? plan.ottPlans.map(ott => `<img src="Assert/PlanImages/${ott.icons}.png" alt="${ott.platformName}" class="ms-3 ott-icon">`).join("")
+                    ? plan.ottPlans.map(ott => `<img src="Assert/PlanImages/${ott.icons}.png" alt="${ott.platformName}" class="ott-icon ms-3">`).join("")
                     : "No OTT benefits";
     
                 let planCard = `
                     <div class="col-md-4 mb-3">
                         <div class="card plan_card">
-                            <div class="d-inline-block card-header text-start text-white fs-4 plan_card_head">
-                                <span class="d-inline-block fs-1 fw-bold plan_price">₹${plan.planPrice}</span>
+                            <div class="card-header text-white fs-4 text-start d-inline-block plan_card_head">
+                                <span class="plan_price fw-bold fs-1 d-inline-block">₹${plan.planPrice}</span>
                                 <br>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <span class="d-block p-1 plan_span">${plan.validity} | ${plan.data}</span>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="d-block plan_span p-1">${plan.validity} | ${plan.data}</span>
                                     ${ottDisplay}
                                 </div>
-                                <span class="position-absolute end-0 fw-bold my-3 popular-tag px-3 py-1 tag top-0">
+                                <span class="popular-tag position-absolute top-0 end-0 my-3 px-3 py-1 fw-bold tag">
                                     ${plan.tag || ""}
                                 </span>
                             </div>
@@ -331,22 +331,15 @@
             "handler": async function (response) {
                 alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
 
-                const rechargeDate = new Date();
-                const expiryDate = new Date();
-                expiryDate.setDate(expiryDate.getDate() + parseInt(plan.validity));
-
-                // Convert to local time zone before sending
-                const formattedRechargeDate = rechargeDate.toISOString().slice(0, 19); // Removes milliseconds
-                const formattedExpiryDate = expiryDate.toISOString().slice(0, 19); // Removes milliseconds
-
+                // Prepare recharge data
                 const rechargeData = {
-                    user: { userId: userId },
-                    plan: { planId: planId },
+                    user: { userId: userId },  // Wrap userId inside an object
+                    plan: { planId: planId },  // Wrap planId inside an object
                     transactionStatus: "SUCCESS",
                     paymentId: response.razorpay_payment_id,
-                    rechargeDate: formattedRechargeDate,
-                    expiryDate: formattedExpiryDate
+                    rechargeDate: new Date().toISOString()
                 };
+
                 // Save recharge details to the backend
                 try {
                     console.log("Sending recharge data:", rechargeData);  // ADD THIS HERE

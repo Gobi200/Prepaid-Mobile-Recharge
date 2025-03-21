@@ -27,6 +27,15 @@
             background-color: #03045E;
             color: white;
         }
+        .table-responsive {
+            overflow-x: auto;
+            scrollbar-width: none; /* For Firefox */
+            -ms-overflow-style: none; /* For Internet Explorer and Edge */
+        }
+
+        .table-responsive::-webkit-scrollbar {
+            display: none; /* For Chrome, Safari, and Opera */
+        }
     </style>
 </head>
 <body>
@@ -76,12 +85,13 @@
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead class="recharge_table_head">
-                        <tr>
+                        <tr class="text-center">
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Email</th>
                             <th>Mobile Number</th>
+                            <th>Plan ID</th>
                             <th>Recharged Plan</th>
+                            <th>Transaction ID</th>
                             <th>Date and Time</th>
                             <th>Action</th>
                         </tr>
@@ -162,75 +172,38 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
     fetchRechargeData();
-
-    async function fetchRechargeData() {
-        try {
-            const response = await fetch('http://localhost:3000/rechargeData');
-            if (!response.ok) throw new Error("Failed to fetch recharge data");
-
-            const rechargeData = await response.json();
-            populateRechargeTable(rechargeData);
-        } catch (error) {
-            console.error("Error fetching recharge data:", error);
-        }
-    }
-
-    function populateRechargeTable(rechargeData) {
-        const tbody = document.getElementById("recharge-table");
-        tbody.innerHTML = rechargeData.map(user => `
-            <tr>
-                <td>${user.id}</td>
-                <td>${user.name}</td>
-                <td>${user.email}</td>
-                <td>${user.mobile}</td>
-                <td>${user.plan}</td>
-                <td>${user.date}</td>
-                <td>
-                    <button class="btn refund-btn" onclick="openPasswordModal(${user.id}, this)">Refund</button>
-                </td>
-            </tr>
-        `).join("");
-    }
 });
 
-// Global functions (same as before)
-
-let currentButton = null;
-let currentUserId = null;
-
-function openPasswordModal(userId, button) {
-    currentButton = button;
-    currentUserId = userId;
-
-    const passwordModal = new bootstrap.Modal(document.getElementById('passwordModal'));
-    passwordModal.show();
+function fetchRechargeData() {
+    fetch("http://localhost:8091/api/recharge") // Adjust URL as per your backend
+        .then(response => response.json())
+        .then(data => {
+            populateRechargeTable(data);
+        })
+        .catch(error => console.error("Error fetching recharge data:", error));
 }
 
-function validatePassword() {
-    const passwordInput = document.getElementById("passwordInput");
-    const defaultPassword = "123456";
-
-    if (passwordInput.value === defaultPassword) {
-        showRefundToast();
-        currentButton.textContent = "Refunded";
-        currentButton.classList.remove("btn-warning");
-        currentButton.classList.add("btn-success");
-        currentButton.disabled = true;
-
-        const passwordModal = bootstrap.Modal.getInstance(document.getElementById('passwordModal'));
-        passwordModal.hide();
-
-        passwordInput.value = "";
-    } else {
-        alert("Incorrect password! Please try again.");
-    }
-}
-
-function showRefundToast() {
-    const toast = new bootstrap.Toast(document.getElementById('refundToast'));
-    toast.show();
+function populateRechargeTable(recharges) {
+    const tableBody = document.getElementById("recharge-table");
+    tableBody.innerHTML = "";
+    
+    recharges.forEach(recharge => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${recharge.rechargeId}</td>
+            <td>${recharge.user.username}</td>
+            <td>${recharge.user.mobile}</td>
+            <td>${recharge.plan.planId}</td>
+            <td><i class="bi bi-currency-rupee"></i>${recharge.plan.planPrice}</td>
+            <td>${recharge.paymentId}</td>
+            <td>${new Date(recharge.rechargeDate).toLocaleString()}</td>
+            <td><button class='btn btn-danger'>Refund</button></td>
+        `;
+        tableBody.appendChild(row);
+    });
 }
 
     </script>
+
 </body>
 </html>

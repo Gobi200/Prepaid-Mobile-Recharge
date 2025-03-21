@@ -45,7 +45,11 @@ public class PlanController {
 	    return ResponseEntity.ok(plans);
 	}
 
-	 
+	@GetMapping("/{planId}/price")
+    public String getPlanPrice(@PathVariable String planId) {
+        return planService.getPlanPrice(planId);
+    }
+	
 	@PostMapping
 	public String addPlan(@RequestBody Plan plan) {
 		return planService.addPlan(plan);

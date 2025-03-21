@@ -346,7 +346,7 @@
         </div>
     </div>
 
-    <button class="instant-recharge-btn">
+    <button class="instant-recharge-btn" onclick="scrollToSection()">
         <i class="bi bi-lightning-fill"></i>
         <span class="btn-text">Instant Recharge</span>
     </button>
@@ -366,11 +366,11 @@
                 </div>
             </div>
             
-            <div class="col-lg- col-md-6 col-sm-12 col-12 text-white p-4 rounded-4 Mobile_recharge">
+            <div class="col-lg- col-md-6 col-sm-12 col-12 text-white p-4 rounded-4 Mobile_recharge" id="recharge-section" >
                 <h5 class="title">MOBILE RECHARGE</h5>
                 <div class="mb-3 mt-4">
                     <label for="mobileNumber" class="form-label mt-3 text_label">Mobile Number</label>
-                    <input type="tel" class="form-control rounded-5 w-100 mt-2" id="mobileNumber" placeholder="Enter mobile number" required>
+                    <input type="tel" class="form-control rounded-5 w-100 mt-2 tracking-wide" id="mobileNumber" placeholder="Enter mobile number" required>
                     <span class="error-text"></span> <!-- Space reserved to prevent shifting -->
                 </div>
                 
@@ -456,7 +456,7 @@
                         <p class="mb-1"><i class="bi bi-bell-fill icon_color"></i> <span class="ps-2">Subscription</span></p>
                         <div class="d-flex align-items-center gap-2 mb-3">
                             <img src="Assert/PlanImages/netflix.png" alt="Netflix" style="width: 40px; height: 40px;">
-                            <img src="Assert/PlanImages/amazon-prime.png" alt="Amazon_Prime" style="width: 50px; height: 50px;">
+                            <img src="Assert/PlanImages/Prime_Icon.png" alt="Amazon_Prime" style="width: 50px; height: 50px;">
                             <img src="Assert/PlanImages/spotify.png" alt="Spotify" style="width: 40px; height: 40px;">
                             <img src="Assert/PlanImages/youtube.png" alt="Youtube" style="width: 50px; height: 50px; padding-left: 4px;">
                         </div>
@@ -486,7 +486,7 @@
                         <p class="mb-1"><i class="bi bi-bell-fill icon_color"></i> <span class="ps-2">Subscription</span></p>
                         <div class="d-flex align-items-center gap-2 mb-3">
                             <img src="Assert/PlanImages/netflix.png" alt="Netflix" style="width: 40px; height: 40px;">
-                            <img src="Assert/PlanImages/amazon-prime.png" alt="Amazon_Prime" style="width: 50px; height: 50px;">
+                            <img src="Assert/PlanImages/Prime_Icon.png" alt="Amazon_Prime" style="width: 50px; height: 50px;">
                             <img src="Assert/PlanImages/spotify.png" alt="Spotify" style="width: 40px; height: 40px;">
                             <img src="Assert/PlanImages/youtube.png" alt="Youtube" style="width: 50px; height: 50px; padding-left: 4px;">
                         </div>
@@ -515,7 +515,7 @@
                         <p><i class="bi bi-chat-dots-fill icon_color"></i> <span class="ps-2">100 SMS/Day</span></p>
                         <p class="mb-1"><i class="bi bi-bell-fill icon_color"></i> <span class="ps-2">Subscription</span></p>
                         <div class="d-flex align-items-center gap-2 mb-3">
-                            <img src="Assert/PlanImages/amazon-prime.png" alt="Amazon_Prime" style="width: 50px; height: 50px;">
+                            <img src="Assert/PlanImages/Prime_Icon.png" alt="Amazon_Prime" style="width: 50px; height: 50px;">
                             <img src="Assert/PlanImages/spotify.png" alt="Spotify" style="width: 40px; height: 40px;">
                             <img src="Assert/PlanImages/youtube.png" alt="Youtube" style="width: 50px; height: 50px; padding-left: 4px;">
                         </div>                       
@@ -725,46 +725,48 @@
     
     <!-- Mobile Number validation for recharge-->
     <script>
-       document.getElementById("rechargeButton").addEventListener("click", function (event) {
-    event.preventDefault(); // Prevent form submission
-
-    let mobileInput = document.getElementById("mobileNumber");
-    let mobileNumber = mobileInput.value.trim();
-    let errorText = document.querySelector(".error-text");
-
-    // Clear previous error message
-    errorText.textContent = "";
-
-    // Validate if the mobile number is exactly 10 digits
-    if (!/^\d{10}$/.test(mobileNumber)) {
-        errorText.textContent = "Enter a valid 10 digit mobile number";
-        return;
-    }
-
-    // Check the mobile number in the database using Fetch API
-    fetch(`http://localhost:8091/users/check-mobile?mobile=${mobileNumber}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
+        document.getElementById("rechargeButton").addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent form submission
+    
+            let mobileInput = document.getElementById("mobileNumber");
+            let mobileNumber = mobileInput.value.trim();
+            let errorText = document.querySelector(".error-text");
+    
+            // Clear previous error message
+            errorText.textContent = "";
+    
+            // Validate if the mobile number is exactly 10 digits
+            if (!/^\d{10}$/.test(mobileNumber)) {
+                errorText.textContent = "Enter a valid 10-digit mobile number";
+                return;
             }
-            return response.json();
-        })
-        .then(exists => {
-            if (exists) {
-                // Redirect to viewPlans.html if mobile number exists
-                window.location.href = "viewPlans.html";
-            } else {
-                errorText.textContent = "Please Enter a Valid Prepaid Mobicomm Number";
-            }
-        })
-        .catch(error => {
-            console.error("Error checking mobile number:", error);
-            errorText.textContent = "Error checking number. Try again later.";
+    
+            // Check the mobile number in the database using Fetch API
+            fetch(`http://localhost:8091/users/check-mobile?mobile=${mobileNumber}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return response.json();
+                })
+                .then(exists => {
+                    if (exists) {
+                        // Store the mobile number in localStorage
+                        localStorage.setItem("mobileNumber", mobileNumber);
+    
+                        // Redirect to viewPlans.html
+                        window.location.href = "viewPlans.html";
+                    } else {
+                        errorText.textContent = "Please Enter a Valid Prepaid Mobicomm Number";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error checking mobile number:", error);
+                    errorText.textContent = "Error checking number. Try again later.";
+                });
         });
-});
-
-
     </script>
+    
 
     <!-- Email Validation for newsletter -->
     <script>
@@ -852,6 +854,12 @@
         }
 
         setInterval(changeText, 2000); // Change text every 1.5 sec
+    </script>
+
+    <script>
+        function scrollToSection() {
+            document.getElementById("recharge-section").scrollIntoView({ behavior: "smooth" });
+        }
     </script>
     </body>
 </html>
